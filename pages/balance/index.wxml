@@ -1,0 +1,62 @@
+
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '获取中' }}"/>
+
+<!-- nodata  -->
+<template is="nodata" wx:if="{{nodata}}" />
+
+<view class="select__top flex-row">
+    <view class="menoy">当前余额： <text class="red">￥ {{money}}</text></view>
+    <view class="date flex-row">日期： 
+        <picker mode="date" value="{{date}}" end="{{endTime}}" bindchange="selectDate">
+            <view class="select">{{startTime}}</view>
+        </picker>
+    </view>
+</view>
+
+<view class="page">
+    <view class="page__bd">
+        <block wx:if="{{orders.length > 0}}">
+            <view class="order_list" wx:for="{{orders}}" wx:key="{{index}}">
+                <view class="order_list_top">
+                    <view class="order_list_top_logo {{ item.type == '收'? 'greenbg' : 'redbg'}}">
+                        <text>{{item.type}}</text>
+                    </view>
+                </view>
+                <view class="order_list_body">
+                    <view class="order_list_body_item" wx:if="{{item.title}}"> 
+                        <text class="order_list_body_item_title">{{item.title}}</text>
+                    </view>
+                    <view class="order_list_body_item">
+                        <text class="order_list_body_item_time">时间：{{item.createtime}}</text>
+                    </view>
+                    <view class="order_list_body_item">
+                        <text class="order_list_body_item_time">余额：￥ {{item.lastmoney}}</text>
+                    </view>
+                </view>
+                <view class="order_list_footer">
+                    <view>{{item.source}}</view>
+                    <text class="order_list_body_item_money">{{ item.type == '收'? '+' : '-'}} {{item.moneyscore}}</text>
+                </view>
+            </view>
+        </block>
+        <!--  -->
+        <template is="loadmore" wx:if="{{more}}" data="{{ text: '获取更多中' }}"/> 
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+    <view class="no_data_content">
+        <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+        <text class="no_data_text">你暂时还没有余额记录</text>
+    </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>

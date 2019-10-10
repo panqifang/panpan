@@ -1,0 +1,19 @@
+<view class="page">
+    <view class="page__hd">
+        <image class="app_logo" src="{{appInfo.logo? appInfo.logo : '../../assets/images/user_avatar.png'}}"></image>
+        <view class="app_title">{{appInfo.name}}</view>
+    </view>
+    <view class="page__bd">
+        <view class="app_tip">
+            <view class="tip">
+                为了更好使用本系统，系统需要你授权获取头像、昵称等一些基本信息
+            </view>
+        </view>
+        <view class="app__btn">
+            <button type="primary" open-type="getUserInfo" bindgetuserinfo="wxlogin"> 授权登陆 </button>
+        </view>
+        <!-- <view class="app__btn">
+            <button type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> 绑定手机登录 </button>
+        </view> -->
+    </view>
+</view>

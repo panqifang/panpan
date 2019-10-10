@@ -1,0 +1,67 @@
+
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '获取中' }}"/>
+
+ <!-- nodata  -->
+<template is="nodata" wx:if="{{nodata}}" />
+
+<view class="page">
+    <view class="page__bd">
+        <block wx:if="{{orders.length > 0}}">
+            <view class="order_list" wx:for="{{orders}}" wx:key="{{index}}">
+                <view class="order_list_top">
+                    <view class="order_list_top_name" style="padding-left: 0;">订单号：{{item.uniontid}}</view>
+                    <view class="order_list_top_right">¥ {{item.total_fee}}</view>
+                </view>
+                <view class="order_list_body">
+                    <view class="order_list_body_item"> 
+                        领取时间：
+                        <text class="order_list_body_item_time">{{item.create_time}}</text>
+                    </view>
+                    <view class="order_list_body_item" wx:if="{{item.status}}">
+                        提现结果：
+                        <text class="order_list_body_item_money" wx:if="{{item.status == 10}}" style="color:#4fa5ff">待转</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.status == 11}}" style="color:#4fa5ff">待审核</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.status == 20}}" style="color:green">已转</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.status == 30}}" style="color:red">失败</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.status == 31}}" style="color:red">失败</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.status == 40}}" style="color:orange">退回</text>
+                    </view>
+                    <view class="order_list_body_item" wx:if="{{item.type}}">
+                        提现类型：
+                        <text class="order_list_body_item_money" wx:if="{{item.type == 10}}">微信提现到零钱</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.type == 11}}">:微信提现到银行卡</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.type == 20}}">支付宝提现</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.type == 30}}">银行卡提现(连连)</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.type == 40}}">银行卡提现(上海)</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.type == 50}}">错误</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.type == 60}}">联动优势</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.type == 61}}">易付宝</text>
+                        <text class="order_list_body_item_money" wx:if="{{item.type == 70}}">通联代付</text>
+                    </view>
+                    <view wx:if="{{item.pay_result}}">状态信息：<text class="order_list_body_item_time">{{item.pay_result}}</text></view>
+                </view>
+            </view>
+        </block>
+        <!--  -->
+        <template is="loadmore" wx:if="{{more}}" data="{{ text: '获取更多中' }}"/> 
+
+       
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+    <view class="no_data_content">
+        <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+        <text class="no_data_text">你暂时还没有提现记录</text>
+    </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>

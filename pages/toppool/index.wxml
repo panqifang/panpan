@@ -1,0 +1,75 @@
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '获取数据中' }}" />
+<view class="page">
+
+  <view class="tabbox">
+    <view bindtap='changeTab' data-index='0' class='tabbox-item {{ tabindex == 0 ? "tabbox-item-active" : ""}}'>商户列表</view>
+    <view class='hrk'></view>
+    <view bindtap='changeTab' data-index='1' class='tabbox-item {{ tabindex == 1 ? "tabbox-item-active" : ""}}'>附近商户</view>
+  </view>
+  <view class="page__bd" wx:if="{{tabindex == 0}}">
+
+    <block wx:if="{{orders.length > 0}}">
+      <view class="order_list " wx:for="{{orders}}" wx:key="{{index}}">
+        <view class="order_list_cow " bindtap='activeCenter' data-shopid='{{item.shopid}}'>
+          <view class='order_list_top_active high' >
+            <text class="order_list_body_item_title shop_title l">{{item.title}}</text>
+            <text class="order_list_body_item_money center">鼓励金已达\n¥{{item.pool_bottom}}</text>
+            <text class="time r">倒计时\n{{timeStr[item.shopid]?timeStr[item.shopid]:'00:00:00'}}</text>
+          </view>
+          <image class="order_list_top_front" src="{{item.front_url}}"></image>
+          <view class='address_layout'>
+            <text class="address">{{item.address}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <template is="nodata" wx:if="{{nodata}}" />
+  </view>
+
+
+  <view class="page__bd" wx:if="{{tabindex == 1}}">
+
+    <block wx:if="{{orders_near.length > 0}}">
+      <view class="order_list " wx:for="{{orders_near}}" wx:key="{{index}}">
+        <view class="order_list_cow " bindtap='activeCenter' data-shopid='{{item.shopid}}'>
+          <view class='order_list_top_active high'>
+            <text class="order_list_body_item_title shop_title l">{{item.title}}</text>
+            <text class="order_list_body_item_money center ">距离\n{{item.distance}}</text>
+            <text class="time r">倒计时\n{{timeStr[item.shopid]?timeStr[item.shopid]:'00:00:00'}}</text>
+          </view>
+          <image class="order_list_top_front" src="{{item.front_url}}"></image>
+          <view class='address_layout'>
+            <text class="address">{{item.address}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <!-- nodata  -->
+    <template is="nodata" wx:if="{{nodata}}" />
+  </view>
+
+
+
+
+
+
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+  <view class="no_data_content">
+    <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+    <text class="no_data_text">你暂时还没有数据</text>
+  </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">{{text}}</view>
+  </view>
+</template>

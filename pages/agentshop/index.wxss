@@ -1,0 +1,54 @@
+
+.order_list {
+    margin: 10rpx 0;
+}
+.un__bind {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.title {
+    padding: 20rpx;
+}
+.title text {
+    font-size: 32rpx;
+    color: #999999;
+}
+.un__bind .order_list_body_item {
+    font-size: 28rpx;
+    color: #444;
+}
+.un__bind .order_list_body {
+    flex: 1;
+}
+.order_list_body_item_time {
+    font-size: 28rpx;
+    color: #444;
+}
+.order_list_body-btn {
+    display: flex;
+    align-items: center;
+    margin: 0 10rpx;
+}
+
+.shop__logo {
+    width: 80rpx;
+    height: 80rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+}
+.order_list_body_item_money {
+    font-size: 30rpx;
+}
+.right__icon {
+    display: flex;
+    align-items: center;
+    padding-right: 20rpx;
+}
+.right_arrow {
+    width: 30rpx;
+    height: 30rpx;
+}
+.order_list_body__WEI {
+    padding: 20rpx;
+}

@@ -1,0 +1,47 @@
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '加载中' }}"/>
+
+<view class="page" wx:if="{{init}}">
+    <view class="page__hd">
+        <open-data class="app_logo" type="userAvatarUrl"></open-data>
+        <open-data class="app_title" type="userNickName"></open-data>
+    </view>
+    <view class="page__bd">
+        <form bindsubmit="formSubmit">
+            <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorText}}</view>
+            <view class="weui-cells__title">手机信息</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input weui-cell_vcode">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">手机号</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input type="number" class="weui-input" bindinput="bindMobileChange" maxlength="11" name="mobile" value="{{mobile}}" placeholder="请输入手机号" />
+                    </view>
+                    <view class="weui-cell__ft">
+                        <view class="weui-vcode-btn" bindtap="getSmsCode">{{smsCodeBtnText}}</view>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">验证码</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input type="number" class="weui-input" name="code" placeholder="输入验证码"/>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" formType="submit" loading="{{submit}}">执行绑定</button>
+            </view>
+        </form>
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>

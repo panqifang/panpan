@@ -1,0 +1,55 @@
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '获取订单中' }}" />
+
+<!-- nodata  -->
+<template is="nodata" wx:if="{{nodata}}" />
+
+<view class="page">
+  <view class="page__bd">
+    <block wx:if="{{orders.length > 0}}">
+      <block  wx:for="{{orders}}" wx:key="{{index}}" >
+      <view wx:if="{{item.cash > 0 || item.voucher > 0}}" class="order_list" bindtap="cannelOrder" data-order="{{item}}">
+        <view class="order_list_top">
+        </view>
+        <view class="order_list_body">
+          <view class="order_list_body_item" wx:if="{{item.cash > 0}}">
+            <text class="order_list_body_item_title">使用余额：￥ {{item.cash}}</text>
+          </view>
+          <view class="order_list_body_item" wx:if="{{item.envelope}}">
+            <text class="order_list_body_item_time">使用红包：￥ {{item.envelope}}</text>
+          </view>
+          <view class="order_list_body_item" wx:if="{{item.voucher > 0}}">
+            <text class="order_list_body_item_title">使用代金券：￥ {{item.voucher}}</text>
+          </view>
+          <view class="order_list_body_item">
+            <text class="order_list_body_item_time">下单时间：{{item.create_time}}</text>
+          </view>
+        </view>
+        <view class="order_list_footer">
+          订单金额
+          <text class="order_list_body_item_money">￥{{item.total_fee}}</text>
+        </view>
+        <view class="right__icon">
+          <image class="right_arrow" src="/assets/images/right.png"></image>
+        </view>
+      </view>
+      </block>
+    </block>
+  </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+  <view class="no_data_content">
+    <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+    <text class="no_data_text">你暂时还没有未支付的订单</text>
+  </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">{{text}}</view>
+  </view>
+</template>

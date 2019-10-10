@@ -1,0 +1,389 @@
+page, .page, .page__hd {
+  position: relative;
+  background: #f8f8f8;
+}
+
+.user-top {
+  height: 100rpx;
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-top: 1rpx solid rgba(203, 203, 203, 0.5);
+}
+
+.shopbtns {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 120rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.ordertitle {
+  display: flex;
+  align-items: center;
+}
+
+.shop-tr {
+  width: 274rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.order-tr {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.mapgoto {
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.mapscan {
+  width: 150rpx;
+  height: 60rpx;
+}
+
+.ordertitle {
+  height: 80rpx;
+}
+
+.nearshop {
+  padding: 10rpx 40rpx;
+  background: #313131;
+  color: #fff;
+  font-size: 26rpx;
+  border-radius: 6rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-view {
+  height: 100vh;
+  padding-top: 100rpx;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.user-orders {
+  border-top: 1rpx solid rgba(203, 203, 203, 0.1);
+  padding-left: 274rpx;
+  box-sizing: border-box;
+  background: #f6f6f6;
+  height: 100%;
+  overflow: hidden;
+}
+
+.shop-scroll {
+  border-right: 1rpx solid rgba(0, 0, 0, 0.1);
+  width: 274rpx;
+  height: 100%;
+}
+
+.shop-item {
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  margin-bottom: 30rpx;
+}
+
+.logoinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+}
+
+.logoinfo .title {
+  font-size: 30rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.logoinfo .hot {
+  font-size: 26rpx;
+  color: #999;
+}
+
+.shop-active {
+  background: #fff;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.shop-active  .title {
+  color: #18a234;
+}
+
+/*  */
+
+.orders-page {
+  display: none;
+}
+
+.order-scroll {
+  height: 100%;
+  flex: 1;
+}
+
+.orders-item {
+  display: flex;
+  align-items: center;
+}
+
+.orders-item .logo {
+  width: 90rpx;
+  height: 90rpx;
+  display: block;
+  margin: 20rpx;
+}
+
+.orders-item .nickname {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+
+.orders-item .nickname .name {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.orders-item .nickname .time {
+  font-size: 26rpx;
+  color: #999;
+  display: flex;
+  padding-left: 20rpx;
+}
+
+.money-tip {
+  color: #f60;
+  margin: 0 8rpx;
+}
+
+.money-def {
+  color: #333;
+  margin: 0 8rpx;
+}
+
+.give-btn {
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  color: #f60;
+  margin-right: 20rpx;
+}
+
+.give-btn text {
+  font-size: 28rpx;
+}
+
+.up__box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  width: 50rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+
+.up {
+  color: green;
+}
+
+.down {
+  color: #f60;
+}
+
+.logo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.page__show {
+  display: block;
+}
+
+.no__up {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+/*hb  */
+
+.popup__container {
+  background: none;
+}
+
+.popup__mask {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.img-popup {
+  overflow: hidden;
+  width: 600rpx;
+  height: 757rpx;
+  position: relative;
+}
+
+.hb_img {
+  width: 600rpx;
+  height: 757rpx;
+}
+
+.hb__close {
+  padding: 40rpx 20rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hb_img__close {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.hb_get_money {
+  font-size: 46rpx;
+  color: red;
+  padding-right: 20rpx;
+}
+
+.hb_money {
+  position: absolute;
+  width: 600rpx;
+  left: 0;
+  top: 310rpx;
+  text-align: center;
+}
+
+.img-popup_6a60ed12 {
+  overflow: hidden;
+  width: 600rpx;
+  height: 862rpx;
+  position: relative;
+}
+
+.hb_img_6a60ed12 {
+  width: 600rpx;
+  height: 851rpx;
+}
+
+.hb_money_6a60ed12 {
+  position: absolute;
+  width: 600rpx;
+  left: 0;
+  top: 468rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hb_money_6a60ed12 .hb_get_money {
+  color: #fff;
+  margin-right: 240rpx;
+}
+
+/*  */
+
+.morebtn {
+  margin: 10rpx;
+  text-align: center;
+  padding: 10rpx;
+  font-size: 30rpx;
+  color: #888;
+}
+
+.hbtip {
+  position: absolute;
+  left: 37rpx;
+  top: 510rpx;
+  color: #fff;
+  width: 100%;
+  font-size: 26rpx;
+}
+
+.toPool {
+  background: #fff;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+  margin: 16rpx;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  justify-content: space-between;
+}
+
+.itemorder {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+  margin: 16rpx;
+  border-radius: 8rpx;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1rpx solid rgba(203, 203, 203, 0.2);
+}
+
+.fh {
+  font-size: 30rpx;
+  color: #666;
+  padding: 10rpx 0;
+  border-right: 1rpx solid rgba(203, 203, 203, 0.2);
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.xq {
+  font-size: 30rpx;
+  color: #666;
+  padding: 10rpx 0;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.fenhbody {
+  display: flex;
+}
+
+.scam {
+  width: 140rpx;
+  height: 55rpx;
+}
+
+.sysimg {
+  width: 26rpx;
+  height: 26rpx;
+}
+
+.systext {
+  font-size: 26rpx;
+  margin-left: 10rpx;
+  margin-top: 4rpx;
+}
+
+.no_data_content {
+  height: 700rpx;
+}
+
+.mdpic {
+  width: 442rpx;
+  height: 208rpx;
+}

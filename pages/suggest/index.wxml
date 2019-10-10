@@ -1,0 +1,69 @@
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '加载中' }}"/>
+
+<view class="page" wx:if="{{init}}">
+    <view class="page__bd">
+        <form bindsubmit="formSubmit">
+            <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorText}}</view>
+            <view class="weui-cells__title">基本信息</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">你的姓名</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input type="text" class="weui-input" name="name" value="{{shop.title}}" placeholder="请输入你的姓名"/>
+                    </view>
+                </view>
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">联系方式</view>
+                    </view>
+                    <view class="weui-cell__bd">
+                        <input type="number" class="weui-input" maxlength="11" name="phone" value="{{shop.phone}}" placeholder="请输入联系方式" />
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-cells__title">要投诉的店铺</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell weui-cell_input">
+                    <view class="weui-cell__hd">
+                        <view class="weui-label">选择</view>
+                    </view>
+                    
+                    <view class="weui-cell__bd">
+                   
+                        <picker mode="selector" class="weui-input" range="{{ shoplists }}" value="{{ areaIndex }}" range-key="title" bindchange="shopPickerChange">
+                            <view>{{shopName}}</view>    
+                        </picker>
+                    </view>
+                </view>
+            </view>
+
+            <view class="weui-cells__title">投诉内容</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <textarea class="weui-textarea" name="content" bindinput="countInputNum" value="{{shop.content}}" placeholder="输入投诉内容" style="height: 3.3em" max="140" />
+                        <view class="weui-textarea-counter">{{num}}/140</view>
+                    </view>
+                </view>
+            </view>
+            
+            <view class="hei30"></view>
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" formType="submit" loading="{{submit}}">提交</button>
+            </view>
+            <view class="hei30"></view>
+        </form>
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>

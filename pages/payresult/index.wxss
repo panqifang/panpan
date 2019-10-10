@@ -1,0 +1,57 @@
+page {
+    height: 100%;
+    background: #ffffff;
+}
+
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100rpx;
+}
+.icon-box__desc {
+    color: #666666;
+}
+.pay__result__btns {
+    margin-top: 60rpx;
+    padding: 40rpx;
+}
+
+.popup__container {
+    background: none;
+}
+.popup__mask {
+    background: rgba(0,0,0,.6);
+}
+.img-popup {
+    overflow: hidden;
+    width: 500rpx;
+    height: 631rpx;
+    position: relative;
+}
+.hb_img {
+    width: 500rpx;
+    height: 631rpx;
+}
+.hb__close {
+    padding: 40rpx 20rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hb_img__close {
+    width: 70rpx;
+    height: 70rpx;
+}
+.hb_get_money {
+    font-size: 46rpx;
+    color: red;
+}
+.hb_money {
+    position: absolute;
+    width: 500rpx;
+    left: 0;
+    top: 256rpx;
+    text-align: center;
+}

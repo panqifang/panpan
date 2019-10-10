@@ -1,0 +1,105 @@
+
+<!-- 代理商，服务商，合伙人模块  -->
+
+<view class="page">
+    <!-- TOP -->
+    <view class="page__hd">
+        <view class="page__hd__user flex-col">
+            <image class="user__avatar" background-size="cover" src="{{user.avatar? user.avatar : '../../assets/images/user_avatar.png'}}" mode="widthFix"></image>
+            <view class="user_name_body">
+                <view wx:if="{{user.nickname}}" class="user__nickname">{{user.nickname}}</view>
+            </view>
+            <view wx:if="{{user.role === 50}}" class="role__text">代理商</view>
+            <view wx:if="{{user.role === 40}}" class="role__text">服务商</view>
+            <view wx:if="{{user.role === 30}}" class="role__text">合伙人</view>
+        </view>
+    </view>
+    <!-- PAGE -->
+    <view class="page__bd">
+        <!-- 提现 -->
+        <navigator url="/pages/cashout/index?type=all" class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">我的余额：￥ {{agent.moneyout}}</view>
+                <view class="weui-cell__ft">提现</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </navigator>
+        <!-- hei20 -->
+        <view class="hei20"></view>
+        <!-- GRID -->
+        <view class="weui-grids">
+            <navigator url="/pages/agentshop/index?t=0" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="/assets/images/yshop.png" />
+                <view class="weui-grid__label flex-col">
+                    <text class="weui-grid__label_text">已绑定店铺</text>
+                    <text class="weui-grid__label_num">{{agent.shops}} 个</text>
+                </view>
+            </navigator>
+            <navigator url="/pages/agentshop/index?t=2" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="/assets/images/wshop.png" />
+                <view class="weui-grid__label flex-col">
+                    <text class="weui-grid__label_text">未绑定店铺</text>
+                    <text class="weui-grid__label_num">{{agent.unshops}} 个</text>
+                </view>
+            </navigator>
+            <navigator url="/pages/agentshop/index?t=1" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="/assets/images/kshop.png" />
+                <view class="weui-grid__label flex-col">
+                    <text class="weui-grid__label_text">可提现店铺</text>
+                    <text class="weui-grid__label_num">￥{{agent.moneyout}}</text>
+                </view>
+            </navigator>
+            <view class="weui-grid" wx:if="{{user.role == 50}}">
+                <image class="weui-grid__icon" src="/assets/images/sewm.png" />
+                <view class="weui-grid__label flex-col">
+                    <text class="weui-grid__label_text">剩余二维码</text>
+                    <text class="weui-grid__label_num">{{agent.num}} 个</text>
+                </view>
+            </view>
+            <view class="weui-grid" wx:if="{{user.role != 50}}">
+                <image class="weui-grid__icon" src="/assets/images/sewm.png" />
+                <view class="weui-grid__label flex-col">
+                    <text class="weui-grid__label_text">剩余开店数量</text>
+                    <text class="weui-grid__label_num">{{agent.num}} 个</text>
+                </view>
+            </view>
+            <navigator url="/pages/cashoutlog/index" class="weui-grid" hover-class="weui-grid_active">
+                <image class="weui-grid__icon" src="/assets/images/ydz.png" />
+                <view class="weui-grid__label flex-col">
+                    <text class="weui-grid__label_text">已提现金额</text>
+                    <text class="weui-grid__label_num">￥{{agent.moneyin}}</text>
+                </view>
+            </navigator>
+        </view>
+        <!-- hei20 -->
+        <view class="hei20"></view>
+        <!-- 我要开店 -->
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="agentOpenShop">
+                <view class="weui-cell__bd">我要开店</view>
+                <view class="weui-cell__ft">点击开店</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+        <!-- hei20 -->
+        <view class="hei20"></view>
+        <!-- 招募合伙人 -->
+        <view class="weui-cells weui-cells_after-title" wx:if="{{user.role === 40}}">
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="createPartnerQr">
+                <view class="weui-cell__bd">招募合伙人</view>
+                <view class="weui-cell__ft">{{agent.partner_num}}</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+        <!-- hei20 -->
+        <view class="hei20"></view>
+        <!-- 招募合伙人 -->
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="/pages/setting/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">系统设置</view>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+    </view>
+</view>

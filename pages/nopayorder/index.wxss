@@ -1,0 +1,13 @@
+
+.page__bd {
+    padding-top: 30rpx;
+}
+.right__icon {
+    display: flex;
+    align-items: center;
+    padding-right: 20rpx;
+}
+.right_arrow {
+    width: 30rpx;
+    height: 30rpx;
+}

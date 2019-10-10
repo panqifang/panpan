@@ -1,0 +1,61 @@
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '获取订单中' }}"/>
+<!-- nodata  -->
+<template is="nodata" wx:if="{{noshop}}" />
+
+<view class="page" wx:if="{{init}}">
+    <view class="page__bd">
+        <view class="shop-info">
+            <image class="top-logo" src="{{shop.logo}}"></image>
+            <view class="top-title">
+                <view>{{shop.title}}</view>
+                
+            </view>
+            <!-- <button wx:if="{{canshare}}" class="top-hot" bindtap="shareTo">推荐好友</button> -->
+        </view>
+        <view class="shop-body">
+            <view  class="pay-title">红包平均金额</view>
+            
+            <view class="section__pay">
+                <input type="digit" id="money" class="pay__input" value="{{payMoney}}" bindinput="handleZanFieldChange" placeholder="输入红包平均金额" auto-focus/>
+            </view>
+
+              <view  class="pay-title">发红包数量</view>
+            
+            <view class="section__pay">
+                <input type="number" class="pay__input" value="{{payNum}}" bindinput="handleZanFieldChange" id="num" placeholder="发红包数量" auto-focus/>
+            </view>
+              <view  class="pay-title">请输入充值金额</view>
+            
+            <view class="section__pay">
+                <input type="digit" class="pay__input" value="{{payInput}}" bindinput="handleZanFieldChange" id="pay" placeholder="输入充值金额" auto-focus/>
+            </view>
+           
+           
+            <view class="pay__btns">
+                <button type="primary" bindtap="popupPay">充值</button>
+            </view>
+        </view>
+    
+       
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+    <view class="icon-box tip__page">
+        <icon type="waiting" size="93"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">温馨提示</view>
+            <view class="icon-box__desc">该店铺未营业，请稍候再试</view>
+        </view>
+    </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>

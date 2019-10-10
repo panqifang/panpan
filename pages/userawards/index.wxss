@@ -1,0 +1,4 @@
+
+.page__bd {
+    padding-top: 30rpx;
+}

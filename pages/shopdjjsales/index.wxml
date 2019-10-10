@@ -1,0 +1,90 @@
+
+<view class="page">
+    <view class="page__hd">
+        <view class="sale-hd">
+            <view class="sale__num">
+                共<text>{{total}}</text>单 销售额：<text>￥ {{totaFees}}</text> / 折扣：<text>￥{{discout}}</text>
+            </view>
+        </view>
+        <view class="date_select">
+            <view class="time_select">
+                <view class="date-section">
+                    <view class="section__title">开始日期：</view>
+                    <view class="sec-date">
+                        <picker mode="date" start="2017-01-01" value="{{startDate}}" end="{{beginEndDate}}" bindchange="bindStartDateChange">
+                            <view class="picker">
+                                {{startDate}}
+                            </view>
+                        </picker>
+                    </view>
+                    <view class="sec-date">
+                        <picker mode="time" value="{{startTime}}" end="{{beginEndTime}}" bindchange="bindStartTimeChange">
+                            <view class="picker">
+                                {{startTime}}
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+                <view class="date-section">
+                    <view class="section__title">结束日期：</view>
+                    <view class="sec-date">
+                        <picker mode="date" value="{{endDate}}" start="{{lastStartDate}}" end="{{lastEndDate}}" bindchange="bindEndDateChange">
+                            <view class="picker">
+                                {{endDate}}
+                            </view>
+                        </picker>
+                    </view>
+                    <view class="sec-date">
+                        <picker mode="time" value="{{lastTime}}" start="{{lastStartTime}}" end="{{lastEndTime}}" bindchange="bindEndTimeChange">
+                            <view class="picker">
+                                {{lastTime}}
+                            </view>
+                        </picker>
+                    </view>
+                </view>
+            </view>
+            <button class="export__btn" type="default" size="mini" bindtap="export"> 导出 </button>
+        </view>
+    </view>
+    <view class="page__bd">
+        <block wx:if="{{orders.length > 0}}">
+            <view class="order_list" wx:for="{{orders}}" wx:key="{{index}}">
+                <view class="order_list_top">
+                    <image class="order_list_top_logo" src="{{item.avatar}}"></image>
+                </view>
+                <view class="order_list_body">
+                    <view class="order_list_body_item"> 
+                        <text class="order_list_body_item_title"> 订单金额：¥ {{item.pay_fee}} / {{item.shop_rate/10}}折</text>
+                    </view>
+                    <view class="order_list_body_item">
+                        <text class="order_list_body_item_time">时间：{{item.create_time}}</text>
+                    </view>
+                    <view class="tips">{{item.note}}</view>
+                </view>
+                <view class="order_list_footer">
+                    <text class="order_list_body_item_money">实收￥{{item.shop_money}}</text>
+                </view>
+            </view>
+        </block>
+        <!-- nodata  -->
+        <template is="nodata" wx:if="{{nodata}}" />
+        <!--  -->
+        <template is="loadmore" wx:if="{{more}}" data="{{ text: '获取更多中' }}"/> 
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+    <view class="no_data_content">
+        <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+        <text class="no_data_text">你暂时还没有订单</text>
+    </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>

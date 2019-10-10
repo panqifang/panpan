@@ -1,0 +1,62 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="date">
+            <view class="date-start">开始时间：
+                <picker class="picker" mode="date" value="{{startDate}}" start="{{beginStartTime}}" end="{{beginEndTime}}" bindchange="bindStartDateChange">
+                    <view class="picker">
+                        {{startDate}}
+                    </view>
+                </picker>
+            </view>
+            <view class="date-end">结束时间：
+                <picker class="picker" mode="date" start="{{lastStartTime}}" end="{{lastEndTime}}" value="{{endDate}}" bindchange="bindEndDateChange">
+                    <view class="picker">
+                        {{endDate}}
+                    </view>
+                </picker>
+            </view>
+        </view>
+        <view class="result">
+            <view wx:if="{{role == 10}}" class="result-item green">
+                <text>余额消费总单数：</text>
+                <text>{{data.consumptionCount}} 单</text>
+            </view>
+            <view wx:if="{{role == 10}}" class="result-item green">
+                <text>余额消费总额：</text>
+                <text>{{data.consumptionMoney}} 元</text>
+            </view>
+            <view class="hr"></view>
+            <view class="result-item green">
+                <text>累计提现总单数：</text>
+                <text>{{data.payCount}} 单</text>
+            </view>
+            <view class="result-item green">
+                <text>累计提现总金额：</text>
+                <text>{{data.payMoney}} 元</text>
+            </view>
+            <view class="hr"></view>
+            <view wx:if="{{role == 10}}" class="result-item red">
+                <text>天天乐奖励金额：</text>
+                <text>{{data.leMoney}} 元</text>
+            </view>
+            <view wx:if="{{role == 10}}" class="result-item red">
+                <text>天天乐奖励笔数：</text>
+                <text>{{data.leCount}} 笔</text>
+            </view>
+             <view wx:if="{{role == 20}}" class="hr"></view>
+            <view wx:if="{{role == 20}}" class="result-item red">
+                <text>累积收入总金额：</text>
+                <text>{{data.backMoney}} 元</text>
+            </view>
+            <view wx:if="{{role == 20}}" class="result-item red">
+                <text>累积收入的总单数：</text>
+                <text>{{data.backCount}} 单</text>
+            </view> 
+            <view class="hr"></view>
+            <view wx:if="{{role == 10}}" class="result-item">
+                <text>返现金额：</text>
+                <text>{{data.backMoney}} 元</text>
+            </view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,98 @@
+<import src="./temp.wxml"/>
+
+<view class="page">
+    <view class="page__hd">
+        <view class="page_role__hd__item flex-row">
+        <navigator url='/pages/login/index'>
+            <image class="user_role__avatar" background-size="cover" src="{{user.avatar? user.avatar : '../../assets/images/user_avatar.png'}}" mode="widthFix"></image>
+        </navigator>
+            <view class="user_role_name_body">
+                <view class="user_role__nickname">{{user.nickname||'点击头像登录'}}</view>
+                <view class="user_backed__money">
+                    <view class='moneynum'>余额: ￥{{user.cash}}</view>
+                    <navigator  url="/pages/cashout/index" class='btntx'>提现</navigator>
+                </view>
+            </view>
+            <view class="user_backed_right">
+                <navigator url="/pages/userbacked/index"  class="user_backed_right_item">已领取：￥{{user.backed_money}}</navigator >
+                <navigator url="/pages/cashoutlog/index" class="user_backed_right_item">已提现：￥{{user.cash_out}}</navigator >
+                
+            </view>
+        </view>
+    </view>
+    <view class="page__bd padding-bottom">
+        <view class="hei20"></view>
+        <view class="swiper__box" wx:if="{{wiperdata.length > 1}}">
+            <!-- 注意：template里面不能放swiper -->
+            <swiper class="swiper" autoplay="{{wiperdata.length > 1}}" vertical="{{true}}" circular="{{true}}">
+                <block wx:for="{{wiperdata}}" wx:key="{{idx}}" wx:for-index="idx" wx:for-item="swipers">
+                    <swiper-item class="swp-tiem">
+                        <block wx:for="{{swipers}}" wx:key="{{index}}" wx:for-index="index" wx:for-item="item">
+                            <view class="swiper-item-user">
+                                <image class="swiper-avatar" src="{{item.avatar}}" background-size="cover"></image>
+                                <view class="swiper-name">{{item.nickname}}</view>
+                                <view class="swiper-tip">
+                                    已领取 <text class="co-r">{{item.backing_money}}</text>元
+                                </view>
+                            </view>
+                        </block>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+       <view class="hei20"></view>
+        <view class="weui-cells grey weui-cells_after-title">
+            <view class="weui-cell weui-cell_access">
+                <view class="weui-cell__bd">消费人次：{{user.paynum}}</view>
+                <template wx:if="{{ hash == '13ad1e22'}}" is="cash-tip-{{hash}}"/>
+                <template wx:elif="{{ hash == 'da4ee1e1'}}" is="cash-tip-{{hash}}"/>
+                <view wx:else class="weui-cell__ft color-red">消费有惊喜，天天拿奖励</view>
+            </view>
+        </view>
+        <view class="hei20"></view>
+
+  <!-- 收货地址 -->
+        <view class="weui-cells grey weui-cells_after-title" >
+            <view bindtap="reward" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                
+                <view class="weui-cell__bd color-blue">奖励订单</view>
+             
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+       
+        <view class="hei20"></view>
+        <!-- 收货地址 -->
+        <view class="weui-cells grey weui-cells_after-title" >
+            <view bindtap="add_address" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                
+                <view class="weui-cell__bd color-blue">收货地址</view>
+             
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+        <view class="hei20"></view>
+        
+        <!-- JIAMENG -->
+        <view class="weui-cells  grey weui-cells_after-title">
+            <navigator url="/pages/setting/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd ">帮助中心</view>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+
+          <view class="hei20"></view>
+
+         <!-- JIAMENG -->
+        <view class="weui-cells grey weui-cells_after-title" >
+            <view bindtap="callPhone" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view wx:if="{{ hash == '61ba3d45'}}" class="weui-cell__bd color-blue">余额在附近商户消费得红包</view>
+                <view wx:else class="weui-cell__bd color-blue">我要加盟</view>
+                <view wx:if="{{ hash == '61ba3d45'}}" class="weui-cell__ft">我要加盟</view>
+                <view wx:else class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+    </view>
+</view>

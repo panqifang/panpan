@@ -1,0 +1,48 @@
+.date {
+    border-top: 1px solid #f6f6f6;
+    padding-left: 30rpx;
+    background: #fff;
+}
+
+.date-start {
+    display: flex;
+    align-items: center;
+    padding: 30rpx 0rpx;
+    border-bottom: 1px solid #f6f6f6;
+}
+
+.date-end {
+    display: flex;
+    align-items: center;
+    padding: 30rpx 0rpx;
+}
+
+.picker {
+    flex: 1;
+    margin-left: 10rpx;
+}
+
+.result {
+    margin-top: 30rpx;
+    padding: 40rpx 30rpx;
+    background: #fff;
+}
+
+.result-item {
+    display: flex;
+    margin-bottom: 30rpx;
+    justify-content: space-between;
+}
+
+.hr {
+    border-bottom: 1px solid #f6f6f6;
+    margin-bottom: 30rpx;
+}
+
+.red {
+    color: #b7494c;
+}
+
+.green {
+    color: green;
+}

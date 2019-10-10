@@ -1,0 +1,155 @@
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '获取数据中' }}" />
+
+<view class="page" wx:if="{{init}}">
+  <view class="page__bd">
+    <form bindsubmit="formSubmit">
+      <block wx:if="{{payment!='wechat'}}">
+        <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorText}}</view>
+        <view class="weui-cells__title">输入银行卡信息</view>
+        <view class="weui-cells weui-cells_after-title">
+
+          <view class="weui-cell weui-cell_input" wx:if="{{cashInfo.bank_list.length > 0}}">
+            <view class="weui-cell__hd">
+              <view class="weui-label">开户银行</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view class="weui-input" bindtap="selectkhBank">{{bankName}}</view>
+            </view>
+            <view class="weui-cell__ft">
+              <image class="down__png" src="../../assets/images/down.png"></image>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">银行卡号</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input type="text" class="weui-input" name="card" value="{{cashInfo.card}}" placeholder="请输入银行卡号" />
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">TDK地址(可选)</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input type="text" class="weui-input" name="tdk" value="{{cashInfo.tdk}}" placeholder="请输入TDK地址" />
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input type="text" class="weui-input" name="realname" value="{{cashInfo.realname}}" placeholder="请输入卡号对应姓名" />
+            </view>
+          </view>
+        </view>
+
+        <view class="weui-cells__title">手机信息</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+              <view class="weui-label">手机号</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input type="number" class="weui-input" bindinput="bindMobileChange" maxlength="11" name="mobile" value="{{mobile}}" placeholder="请输入手机号" />
+            </view>
+            <view class="weui-cell__ft">
+              <view class="weui-vcode-btn" bindtap="getSmsCode">{{smsCodeBtnText}}</view>
+            </view>
+          </view>
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">验证码</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input type="number" class="weui-input" name="smscode" placeholder="输入验证码" />
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:if="{{cashType == 'all'}}">
+        <view class="weui-cells__title">我当前的金额：
+          <text class="my__cash">{{cashInfo.cash}}</text> 元</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">可领金额</view>
+            </view>
+            <view class="weui-cell__bd">
+              <view class="weui-input">{{cashAllMoney}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="weui-cells__title">我当前的金额：
+          <text class="my__cash">{{cashInfo.cash}}</text> 元</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">领取金额</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input type="digit" class="weui-input" name="cash" placeholder="输入要领取的金额" />
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <view class="tip cash__tip">
+        {{cashInfo.remark}}
+      </view>
+      <view class="tip">
+        免责声明：请认真填写以上信息，并核对。如因输入错误导致资金损失，公司不承担责任。
+      </view>
+
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" formType="submit" loading="{{submit}}">提交</button>
+      </view>
+    </form>
+  </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">{{text}}</view>
+  </view>
+</template>
+
+<!-- select -->
+<view class="select__bank__mask" wx:if="{{showBank}}" bindtap="toggleBottomPopup"></view>
+<view class="select__bank" wx:if="{{showBank}}">
+  <view class="select__bank_body">
+    <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索</view>
+        </label>
+      </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+    </view>
+    <view class="weui-cells searchbar-result">
+      <scroll-view scroll-y style="height: 900rpx;">
+        <block wx:for="{{showbanks}}" wx:key="{{index}}">
+          <view class="weui-cell" hover-class="weui-cell_active" bindtap="selectCashOutBank" data-bank="{{item}}">
+            <view class="weui-cell__bd">
+              <view class="{{ item.bank_id == bankid? 'active': '' }}">{{item.bank_name}}</view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,43 @@
+page {
+    background: #f8f8f8;
+}
+
+.my__info {
+    padding: 30rpx;
+    background: #ffffff;
+    border-bottom: 1rpx dashed #cccccc;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pay__info {
+    padding: 50rpx 30rpx;
+    background: #ffffff;
+}
+.section__pay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200rpx;
+}
+.score-view {
+    padding: 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.money {
+    font-size: 60rpx;
+}
+.pay__btns {
+    padding-top: 50rpx;
+}
+
+.back {
+    padding-left: 30rpx;
+}
+.djjs {
+  padding-left: 30rpx;
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,47 @@
+<view class='page' bindtouchstart='bindtouchstart' bindtouchend='bindtouchend'>
+  <!-- <view class='image_layout' wx:if='{{!index}}'> -->
+
+    <!-- <block wx:for="{{videos}}"> -->
+      <!-- <video show-play-btn="{{false}}" show-progress="{{false}}" 
+      enable-progress-gesture='{{false}}' autoplay='{{true}}'
+      controls="{{false}}"
+      object-fit="cover" 
+      bindended="next"
+        id='vd{{index}}' src='{{media[0][media_index[0]]}}'>
+      </video> -->
+      <!-- <view class='content'> 滕王高阁临江渚，佩玉鸣鸾罢歌舞。 画栋朝飞南浦云，珠帘暮卷西山雨。 闲云潭影日悠悠，物换星移几度秋。 阁中帝子今何在？槛外长江空自流。
+      </view> -->
+    <!-- </block> -->
+
+  <!-- </view> -->
+  <view class='image_layout'>
+    <view class='image_wrap'  >
+    <scroll-view class='image_wrap' scroll-into-view='{{imageViewid}}' scroll-y='{{true}}' scroll-with-animation="{{true}}">
+    <block wx:for="{{media[1]}}" wx:for-index="_index">
+    
+      <image mode='scaleToFill' id="i1{{_index}}" src='{{item}}'>
+      </image>
+     
+    </block>
+    <block wx:for="{{media[0]}}" wx:for-index="_index">
+    
+     <video show-play-btn="{{false}}" show-progress="{{false}}" 
+      enable-progress-gesture='{{false}}' autoplay='{{false}}'
+      controls="{{false}}"
+      bindwaiting="waiting"
+      bindplay="play"
+      loop="{{true}}"
+      object-fit="cover" 
+      bindended="next"
+        id='i0{{_index}}' src='{{item}}'>
+      </video>
+     
+    </block>
+    </scroll-view>
+    </view>
+  </view>
+  <image src="../../assets/images/pgdown.png"  class='pgdown'></image>
+  <image bindtap="home" src="{{shopImg}}"  class='head-img'></image>
+  <button   open-type="share" class='share'>转发</button>
+  <button   bindtap='buy' class='buy'>购买</button>
+</view>

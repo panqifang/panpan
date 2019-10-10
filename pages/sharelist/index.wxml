@@ -1,0 +1,38 @@
+<!--pages/share/index.wxml-->
+<image class="bg" mode="widthFix" src="../../assets/images/sbg.png"></image>
+
+<view class="page">
+    <view class="bot"></view>
+    <view class="users">
+        <view class="title">我的邀请</view>
+        <view class="user-tip">共邀请 <view class="num">{{list.length}}</view> 人</view>
+        <!-- 总共获得红包<view class="num">{{}}</view>元 -->
+        <view class="users-list">
+            <view class="list-head">
+                <view class="td td-left">用户</view>
+                <view class="td">时间</view>
+                <view class="td td-right">红包(元)</view>
+            </view>
+            <scroll-view class="scroll-view_H" scroll-y wx:if="{{list.length > 0}}" >
+                <block wx:for="{{list}}" wx:key="{{index}}">
+                    <view class="userslist">
+                        <view class="info">
+                            <image class="avatar" src="{{item.avatar}}"></image>
+                            <view class="nickname">{{item.nickname}}</view>
+                        </view>
+                        <view class="time">{{item.create_time}}</view>
+                        <view wx:if="{{item.money == 0}}" class="status">未消费</view>
+                        <view wx:else class="status">{{item.money}}</view>
+                    </view>
+                </block>
+            </scroll-view>
+            <view class="nodata" wx:if="{{nodata}}"><text>暂时没有推荐用户</text></view>
+        </view>
+    </view>
+    <view class="bot"></view>
+    <!-- <view class="btns">
+        <navigator class="history"  url="/pages/userawards/index" hover-class="weui-cell_active">
+        查看历史推荐奖励信息
+    </navigator>
+    </view> -->
+</view>

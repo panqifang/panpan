@@ -1,0 +1,84 @@
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '获取订单中' }}" />
+<!-- nodata  -->
+<template is="nodata" wx:if="{{noshop}}" />
+
+<view class="page" wx:if="{{init}}">
+  <view class="page__bd">
+    <view class="shop-info">
+      <image class="top-logo" src="{{shop.logo}}"></image>
+      <view class="top-title">
+        <view>{{shop.title}}</view>
+        <text class='hot'>热度：{{shop.pay_times}}</text>
+      </view>
+      <!-- <button wx:if="{{canshare}}" class="top-hot" bindtap="shareTo">推荐好友</button> -->
+    </view>
+    <view class="shop-body">
+      <view class="pay-title">请输入支付金额</view>
+
+      <view class="section__pay">
+        <input disabled='{{ categorys.length?"disabled":""}}' type="digit" class="pay__input" value="{{payInput}}" bindinput="handleZanFieldChange" placeholder="输入支付金额" auto-focus/>
+      </view>
+      <view wx:if="{{shop.pay_min_limit>0}}" class="pay-tip">本次奖励活动最低消费金额：{{shop.pay_min_limit}}</view>
+
+      <view wx:if="{{categorys.length}}" class="pay-title">请选择分类</view>
+      <view class="item_layout">
+        <block class="pay-title" wx:for="{{categorys}}">
+          <label bindtap="categorySelect" data-index="{{index}}"  data-id="{{item.id}}" data-price="{{item.price}}" class="{{index==category_index?'catecory-selected':'category-unselect'}}">{{item.name}}</label>
+        </block>
+      </view>
+
+      <view  wx:if="{{categorys.length}}" class="pay-title">购买数量</view>
+      <view  wx:if="{{categorys.length}}" class="item_layout">
+        <view class='num-layout'>
+        <button  bindtap="reduce">-</button>
+          <input type="number" class="pay__input" value="{{numInput}}" bindinput="handleNumberChange" placeholder="输入购买数量" auto-focus/>
+          <button bindtap="add">+</button>
+        </view>
+      </view>
+
+
+
+      <view class="pay__btns">
+        <button type="primary" bindtap="popupPay">支付</button>
+      </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">奖励金额总计：¥ {{shop.backed_money}}</view>
+      </view>
+    </view>
+    <view class="orders" wx:if="{{orders.length > 0}}">
+      <view class="weui-cells__title">最近奖励名单</view>
+      <block wx:for="{{orders}}" wx:key="{{index}}">
+        <view class="winner__item">
+          <image class="winner__item__img" src="{{item.avatar}}"></image>
+          <view class="winner__item__time">
+            <view class="winner__item__name">{{item.nickname}}</view>
+            <view class="winner__item__date">时间： {{item.update_time}}</view>
+          </view>
+          <view class="winner__item__money">{{item.backing_money}} 元</view>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+  <view class="icon-box tip__page">
+    <icon type="waiting" size="93"></icon>
+    <view class="icon-box__ctn">
+      <view class="icon-box__title">温馨提示</view>
+      <view class="icon-box__desc">该店铺未营业，请稍候再试</view>
+    </view>
+  </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">{{text}}</view>
+  </view>
+</template>

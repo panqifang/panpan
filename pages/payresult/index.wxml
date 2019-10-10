@@ -1,0 +1,30 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="icon-box">
+            <icon type="success" size="93"></icon>
+            <view class="icon-box__ctn">
+                <view class="icon-box__title">支付成功</view>
+                <view class="icon-box__desc">你已经成功支付该订单，可以进行下面的操作</view>
+            </view>
+        </view>
+        <view class="pay__result__btns">
+            <button type="primary" bindtap="backHome">查看订单列表</button>
+        </view>
+    </view>
+</view>
+
+<!--  -->
+<view wx:if="{{showHB}}" class="popup popup--show">
+    <view class="popup__mask"></view>
+    <view class="popup__container">
+        <view class="img-popup">
+            <view class="hb_money">
+                <text class="hb_get_money">{{money}}</text>
+            </view>
+            <image class="hb_img" src="/assets/images/hb.png" mode="widthFix"></image>
+        </view>
+        <view class="hb__close">
+            <image class="hb_img__close" bindtap="close" src="/assets/images/close.png" mode="widthFix"></image>
+        </view>
+    </view>
+</view>

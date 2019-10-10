@@ -1,0 +1,73 @@
+page {
+    padding-top: 100rpx;
+}
+input {
+  background-color: white;
+  padding: 0.5em 1em;
+}
+
+textarea {
+  background-color: white;
+  padding: 0.5em 1em;
+  width: 100%;
+  box-sizing: border-box;
+  height: 240rpx;
+}
+
+.flex-row {
+  display: flex;
+  align-items: center;
+}
+
+.input-group {
+  margin: 1em;
+}
+
+input[name="name"] {
+  flex: 1;
+}
+
+radio-group {
+  flex: 3;
+  margin-left: 1em;
+}
+
+.err {
+  border: 1px orangered solid;
+}
+
+.sub-button {
+  background: green;
+  margin: 40rpx 20rpx;
+  color: white;
+}
+
+.msg {
+  color: lightgray;
+  font-size: smaller;
+  text-align: right;
+}
+
+.msg text {
+  color: gray;
+}
+
+.input {
+  background-color: white;
+  padding: 0.5em 1em;
+}
+
+.list-item {
+  padding: 10rpx;
+}
+
+.mobile-title {
+  padding-left: 40rpx;
+  color: #999999;
+}
+.radio-group {
+  margin-bottom: 40rpx;
+}
+.input-group {
+  margin-bottom: 40rpx;
+}

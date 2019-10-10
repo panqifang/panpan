@@ -1,0 +1,53 @@
+<!-- nodata  -->
+<view class="page">
+  <view class="page__bd">
+    <view class="weui-tab">
+        <view class="weui-navbar">
+            <block wx:for="{{tabs}}" wx:key="*this">
+                <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                    <view class="weui-navbar__title">{{item}}</view>
+                </view>
+            </block>
+            <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+        </view>
+    </view>
+    <block wx:if="{{orders.length > 0}}">
+      <view class="order_list" wx:for="{{orders}}" wx:key="{{index}}">
+        <!-- <view class='order_list_soft'></view> -->
+        <view class="order_list_top">
+          <image class="order_list_top_logo" src="{{item.avatar}}"></image>
+        </view>
+        <view class="order_list_body">
+          <view class="order_list_body_item">
+            <text class="order_list_body_item_title">{{item.nickname}}</text>
+          </view>
+          <view class="order_list_body_item">
+            <text class="order_list_body_item_time">代金券</text>
+          </view>
+        </view>
+        <view class="order_list_footer">
+          <text class="order_list_body_item_money">￥{{item.cash}}</text>
+        </view>
+      </view>
+    </block>
+    <template is="nodata" wx:if="{{nodata}}" />
+    <!--  -->
+    <template is="loadmore" wx:if="{{more}}" data="{{ text: '获取更多中' }}" />
+  </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+  <view class="no_data_content">
+    <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+    <text class="no_data_text">店铺暂时还没有代金券</text>
+  </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">{{text}}</view>
+  </view>
+</template>

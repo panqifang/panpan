@@ -1,0 +1,147 @@
+page {
+  background: #f8f8f8;
+}
+
+.shop-info {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.top-logo {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+
+.top-title {
+  flex: 1;
+}
+
+.top-hot {
+  color: #666;
+  border: none;
+  font-size: 30rpx;
+}
+
+.shop-body {
+  background: #fff;
+  padding: 30rpx 0;
+  border-top: 1rpx solid #e5e5e5;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.top-hot text {
+  color: #4b0;
+}
+
+.pay-title {
+  font-size: 16px;
+  color: #333;
+  padding-left: 30rpx;
+  margin-top: 30rpx;
+  margin-bottom: 10rpx;
+}
+
+.pay__btns {
+  padding: 40rpx 20rpx;
+}
+
+.section__pay {
+  padding: 0 20rpx;
+}
+
+.pay__input {
+  border: 1rpx solid #4b0;
+  padding: 10rpx;
+  height: 60rpx;
+  border-radius: 6rpx;
+  font-size: 40rpx;
+}
+
+.weui-cells {
+  margin: 20rpx 0;
+}
+
+.winner__item {
+  display: flex;
+  padding: 20rpx;
+  background: #fff;
+  border-bottom: 1px solid #f1f1f1;
+  align-items: center;
+}
+
+.winner__item__img {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+
+.winner__item__time {
+  font-size: 28rpx;
+  color: #666;
+  flex: 1;
+  padding-left: 20rpx;
+}
+
+.winner__item__money {
+  font-size: 28rpx;
+  color: darkred;
+  padding-right: 10rpx;
+}
+
+.winner__item__date {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.hot {
+  font-size: 30rpx;
+  color: #666;
+}
+
+.pay-tip {
+  color: lightsalmon;
+  font-size: 16px;
+  padding-left: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.catecory-selected{
+  color: white;
+  background: red;
+  border: 1px solid #666;
+  border-radius: 15rpx;
+  padding: 14rpx 20rpx;
+  margin: 0 10rpx;
+}
+
+.category-unselect {
+  background: white;
+  color: red;
+  border: 1px solid #666;
+  border-radius: 15rpx;
+  padding: 14rpx 20rpx;
+  margin: 0 10rpx;
+}
+.item_layout{
+  padding: 0 20rpx;
+}
+
+.num-layout{
+  display: flex;
+  flex-direction: row;
+}
+
+.num-layout button{
+  width: 30%;
+  line-height: 80rpx;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50rpx;
+}
+.num-layout input{
+  width: 40%;
+}

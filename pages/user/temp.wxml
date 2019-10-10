@@ -1,0 +1,16 @@
+
+ 
+
+<template name="tip-6a60ed12">
+    <view class="msg" style="color:#000;font-size:12px;margin-bottom:20rpx;">
+        使用说明：到惠哆啦联盟商户消费，使用余额支付可免提现手续费，无需绑定银行卡
+    </view>
+</template>
+
+<template name="cash-tip-13ad1e22">
+    <view class="weui-cell__ft color-red">消费变股东，人人享分红，随时可提现</view>
+</template>
+
+<template name="cash-tip-da4ee1e1">
+    <view class="weui-cell__ft color-red">消费变股东，人人享分红，随时可提现</view>
+</template>

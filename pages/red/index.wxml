@@ -1,0 +1,46 @@
+
+<block>
+  <image class='acbg' mode="widthFix" src='../../assets/images/wallet_back.jpeg'></image>
+
+</block> 
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '获取红包中' }}"/>
+<!-- nodata  -->
+<template is="nodata" wx:if="{{noshop}}" />
+
+<view class="page" >  
+   
+       
+          <view class="top-title">
+            <image class="top-logo" src="{{shop.logo}}"></image>
+          
+                <!-- <view  wx:if="{{status==1}}" class='title'>恭喜您获得</view> -->
+                <view class='title'>{{shop.title}}</view>
+                <view  wx:if="{{status==1}}" class='title-pack'>实体店红包</view>
+                <text wx:if="{{status==1}}" class='money'>￥{{red_pack}}</text>
+                <text wx:if="{{status==0}}" class='getting'>正在领取红包...</text>
+                <text wx:if="{{status==2}}" class='msg'>{{message}}</text>
+            </view>
+     
+     
+    
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+    <view class="icon-box tip__page">
+        <icon type="waiting" size="93"></icon>
+        <view class="icon-box__ctn">
+            <view class="icon-box__title">温馨提示</view>
+            <view class="icon-box__desc">该店铺未营业，请稍候再试</view>
+        </view>
+    </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>

@@ -1,0 +1,177 @@
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '加载中' }}" />
+
+<view class="page" wx:if="{{init}}">
+  <view class="page__bd">
+    <form bindsubmit="formSubmit">
+      <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">{{errorText}}</view>
+      <view class="weui-cells__title">基本信息</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">商铺名称</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input type="text" class="weui-input" name="title" value="{{shop.title}}" placeholder="请输入商户名称" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">联系方式</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input type="number" class="weui-input" maxlength="11" name="phone" value="{{shop.phone}}" placeholder="请输入联系方式" />
+          </view>
+        </view>
+      </view>
+
+      <block wx:if="{{shop.switcher == 4 || shop.switcher == 12}}">
+        <view class="weui-cells__title co_blue">例：让利比例设为30%，则商家实收70%</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">让利比例</view>
+            </view>
+            <view class="weui-cell__bd">
+              <slider name="pool_rate" value="{{shop.pool_rate}}" class="weui-input" min="10" max="100" show-value/>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <block wx:if="{{shop.switcher == 4 || shop.switcher == 12}}">
+        <view class="weui-cells__title co_blue">温馨提示：开启涨停，每个消费者领取金额达到设定的涨停比例，领取金额将不再变动，未达到设定领取金额将会继续波动</view>
+        <view class="weui-cells weui-cells_after-title">
+          <view class="weui-cell">
+            <view class="weui-cell__bd">开启涨停</view>
+            <view class="weui-cell__ft">
+              <switch class="weui-input" bindchange="openMostBack" checked='{{isMostHeight}}' />
+            </view>
+            <view class="weui-cell__ft"></view>
+          </view>
+          <view class="weui-cell weui-cell_input" wx:if="{{isMostHeight}}">
+            <view class="weui-cell__hd">
+              <view class="weui-label">涨停比例</view>
+            </view>
+            <view class="weui-cell__bd">
+              <slider name="order_pay_rate" value="{{shop.order_pay_rate}}" class="weui-input" min="5" max="100" show-value/>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <view class="default__setting" wx:if="{{openShopSetDefaultBack}}">
+        <block wx:if="{{shop.switcher == 0 || shop.switcher == 16}}">
+          <view class="weui-cells__title co_blue">若折扣比例设为70%，商家实收7折</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">折扣比例</view>
+              </view>
+              <view class="weui-cell__bd">
+                <slider name="pool_rate" bindchange="poolRateChange" value="{{100 - shop.pool_rate}}" class="weui-input" min="0" max="90" show-value/>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:if="{{shop.switcher == 0 || shop.switcher == 16}}">
+          <view class="weui-cells__title co_blue">若奖励比例设为80%，消费者获得消费金额80%的奖励</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                <view class="weui-label">奖励比例</view>
+              </view>
+              <view class="weui-cell__bd">
+                <slider name="order_pay_rate" value="{{shop.order_pay_rate}}" class="weui-input" min="0" max="100" show-value/>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <block wx:if="{{shop.switcher == 0 && openDDH}}">
+          <view class="weui-cells__title">天天乐设置</view>
+          <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+              <view class="weui-cell__bd">开启天天乐</view>
+              <view class="weui-cell__ft">
+                <switch class="weui-input" bindchange="openDdhSwitch" checked='{{isOpenDdh}}' />
+              </view>
+              <view class="weui-cell__ft"></view>
+            </view>
+            <view class="weui-cell weui-cell_input" wx:if="{{isOpenDdh}}">
+              <view class="weui-cell__hd">
+                <view class="weui-label">天天乐比例</view>
+              </view>
+              <view class="weui-cell__bd">
+                <slider name="ddh_pool_rate" value="{{shop.ddh_pool_rate}}" class="weui-input" min="1" max="{{max_ddh}}" show-value/>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+
+      <view class="weui-cells__title">店铺地址</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+          <view class="weui-cell__hd">
+            <view class="weui-label">地址</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input type="text" class="weui-input" name="address" value="{{address}}" placeholder="输入地址" />
+          </view>
+          <view class="weui-cell__ft">
+            <view class="weui-vcode-btn" bindtap="selectAdress">定位</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <view class="weui-uploader">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">门店图片上传</view>
+                <view class="weui-uploader__info">1张</view>
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files" id="uploaderFiles" wx:if="{{logo}}">
+                  <view class="weui-uploader__file">
+                    <image class="weui-uploader__img mdpic"  bindtap="chooseImage" src="{{logo}}" mode="aspectFill" />
+                  </view>
+                </view>
+                <view class="weui-uploader__input-box" wx:else>
+                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="weui-cells__title">店铺简介</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <textarea class="weui-textarea" name="content" bindinput="countInputNum" value="{{shop.content}}" placeholder="输入店铺一些简介" style="height: 3.3em" max="140" />
+            <view class="weui-textarea-counter">{{num}}/140</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="hei30"></view>
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" formType="submit">保存设置</button>
+      </view>
+      <view class="hei30"></view>
+    </form>
+  </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+  <view class="weui-loadmore">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">{{text}}</view>
+  </view>
+</template>

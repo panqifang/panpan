@@ -1,0 +1,153 @@
+<import src="./temp.wxml" />
+
+<!-- 商户模块  -->
+<view class="page">
+  <!-- TOP -->
+  <view class="page__hd">
+    <view class="page__hd__user flex-col">
+    <navigator url = "/pages/login/index">
+      <image class="user__avatar" background-size="cover" src="{{user.avatar? user.avatar : '../../assets/images/user_avatar.png'}}" mode="widthFix"></image>
+    </navigator>
+      <view class="user_name_body">
+        <view  class="user__nickname">{{user.nickname||'点击头像登录'}}</view>
+      </view>
+      <view class="role__text">商户</view>
+    </view>
+  </view>
+  <!-- PAGE -->
+  <view class="page__bd">
+    <!-- 提现 -->
+    <navigator url="" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">店铺余额：￥ {{user.shopcash}}</view>
+        <!-- <view class="weui-cell__ft">提现</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view> -->
+      </view>
+    </navigator>
+ <view class="hei20"></view>
+    <navigator url="/pages/cashout/index" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">我的余额：￥ {{user.cash}}</view>
+        <view class="weui-cell__ft">提现</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </navigator>
+ <view class="hei20"></view>
+      <!-- 充值 -->
+    <navigator url="/pages/recharge/index?shopid={{shop.shopid}}" class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">我的红包：￥ {{shop.pool_red}}</view>
+        <view class="weui-cell__ft">充值</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+    </navigator>
+    <!-- hei20 -->
+    <view class="hei20"></view>
+    <!-- GRID -->
+    <view class="weui-grids">
+      <view class="weui-grid" wx:if="{{shop.switcher == 0 || shop.switcher == 16}}">
+        <image class="weui-grid__icon" src="/assets/images/money.png" />
+        <view class="weui-grid__label flex-col">
+          <text class="weui-grid__label_text">储钱罐</text>
+          <text class="weui-grid__label_num">￥{{shop.pool}}</text>
+        </view>
+      </view>
+      <view class="weui-grid" bindtap="showShopQr" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/assets/images/sewm.png" />
+        <view class="weui-grid__label flex-col">
+          <text class="weui-grid__label_text">我的二维码</text>
+          <text class="weui-grid__label_num">总{{shop.pay_times}}单</text>
+        </view>
+      </view>
+      <view class="weui-grid " bindtap="showShopRedQr" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/assets/images/sewm.png" />
+        <view   class="weui-grid__label flex-col">
+          <text class="weui-grid__label_text">红包二维码</text>
+          <!-- <view class='innerView'> -->
+            <text class="weui-grid__label_num">￥{{shop.pool_red}}</text>
+            <!-- <text  class="under_line marl weui-grid__label_num">充值</text> -->
+          <!-- </view> -->
+        </view>
+      </view>
+
+      <navigator url="/pages/shopsales/index?shopid={{shop.shopid}}" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/assets/images/djl.png" />
+        <view class="weui-grid__label flex-col">
+          <text class="weui-grid__label_text">总销售额</text>
+          <text class="weui-grid__label_num">￥{{shop.sales}}</text>
+        </view>
+      </navigator>
+      <navigator url="/pages/shopbacked/index?shopid={{shop.shopid}}" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/assets/images/yjl.png" />
+        <view class="weui-grid__label flex-col">
+          <text class="weui-grid__label_text">已发放奖励</text>
+          <text class="weui-grid__label_num">共{{shop.backed_num}}单{{shop.backed_money}}元</text>
+        </view>
+      </navigator>
+      <navigator url="/pages/cashoutlog/index" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/assets/images/ydz.png" />
+        <view class="weui-grid__label flex-col">
+          <text class="weui-grid__label_text">已提现金额</text>
+          <text class="weui-grid__label_num">￥{{user.cash_out}}</text>
+        </view>
+      </navigator>
+      <!-- 会多啦独有 -->
+      <navigator url="/pages/shopteam/index?shopid={{shop.shopid}}" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/assets/images/ydz.png" />
+        <view class="weui-grid__label flex-col">
+          <text wx:if="{{ hash == '6a60ed12'}}" class="weui-grid__label_text">惠哆啦商盟</text>
+          <text wx:else class="weui-grid__label_text">联盟商铺</text>
+          <text class="weui-grid__label_num">￥{{shop.commission}}</text>
+        </view>
+      </navigator>
+      
+      <navigator url="/pages/shopred/index?shopid={{shop.shopid}}" class="weui-grid" hover-class="weui-grid_active">
+        <image class="weui-grid__icon" src="/assets/images/yjl.png" />
+        <view class="weui-grid__label flex-col">
+          <text class="weui-grid__label_text">已发放红包</text>
+          <text class="weui-grid__label_num">共{{shop.red_num}}个{{shop.red_money}}元</text>
+        </view>
+      </navigator>
+    </view>
+    <!-- hei20 -->
+    <view class="hei20"></view>
+    <!-- 我要开店 -->
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="/pages/djj/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">店铺代金券</view>
+        <view class="weui-cell__ft"></view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+    <!-- hei20 -->
+    <view class="hei20"></view>
+    <!-- 我要开店 -->
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="/pages/shopdjjsales/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">预下单订单</view>
+        <view class="weui-cell__ft"></view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+    <!-- hei20 -->
+    <view class="hei20"></view>
+    <!-- 我要开店 -->
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="/pages/shopsetting/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">店铺设置</view>
+        <view class="weui-cell__ft"></view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+    <!-- hei20 -->
+    <view class="hei20"></view>
+    <!-- 招募合伙人 -->
+    <view class="weui-cells weui-cells_after-title">
+      <navigator url="/pages/setting/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">系统设置</view>
+        <view class="weui-cell__ft"></view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+  </view>
+</view>

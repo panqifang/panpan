@@ -1,0 +1,36 @@
+<view class="page">
+  <view class="page__bd">
+    <view wx:if="{{canUseCash}}" class="my__info">
+      <view>我的余额：
+        <text>{{cash}}</text>
+      </view>
+    </view>
+    <view class="pay__info">
+      <view class="pay-title">当前要支付的金额（元）：</view>
+      <view class="section__pay">
+        <text class="money">{{needPay}}</text>
+      </view>
+      <view class="score-view" wx:if="{{ cash >=money  }}">
+        可使用{{canUserBalance}}余额抵扣 {{canUserBalance}}元
+        <switch bindchange="openBalanceBtn" />
+      </view>
+      <block wx:if="{{canUseDjj && djjitems.length > 0}}">
+        <view class="score-view">
+          可使用以下代金券
+        </view>
+        <checkbox-group bindchange="checkboxChange">
+          <view class='djjs' wx:for="{{djjitems}}" wx:key="{{index}}">
+            <label class="checkbox">
+              <checkbox value="{{index}}" checked="{{item.checked}}" />使用{{item.cash}}元代金券
+            </label>
+          </view>
+        </checkbox-group>
+      </block>
+
+      <view class="pay__btns">
+        <button type="primary" bindtap="orderWxPay">确认支付</button>
+      </view>
+    </view>
+
+  </view>
+</view>

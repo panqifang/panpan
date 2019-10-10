@@ -1,0 +1,38 @@
+
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '加载中' }}"/>
+
+<view class="page" wx:if="{{init}}">
+    <view class="page__hd">
+        <scroll-view scroll-y class="shop-agress-view">
+            <view class="info-role-content">
+                <view class="content-section">1.合伙人在小程序（或 app)“{{appname}}”平台发布合伙人商品或服务及优惠活动等基本信息，{{appname}}提供小程序（或 app）平台，供合伙人发布其产品或服务及优惠活动等基本信息，并提供配套的信息和技术服务协助合伙人完成优惠活动。</view>
+                <view class="content-section">2.合伙人绑定微信号成功，将得到一个和所绑定微信号的合伙人 ID，成为{{appname}}的合法合伙人。</view>
+                <view class="content-section">3.成功绑定为合伙人的微信号，不能在用作支付和排队。</view>
+                <view class="content-section">4.合伙人为吸引消费者，预备用合作期间的营业收入的一定比例投入广告营销，直接回馈新老客户，利用“{{appname}}”系统设置“消费惊喜”的折扣率，预留“消费惊喜”活动金额在“合伙人储钱罐”，由“{{appname}}”平台将“消费惊喜”奖励金额按时间顺序依次告知消费者（通过{{appname}}应用上面显示对应金额的方式告知，消费者可通过提现将金额提到自己的银行卡）。合伙人可以在消费者扫码付款前设置消费奖励比率，“{{appname}}”系统根据此设置将奖励金以合伙人的名义代付给消费者（{{appname}}版本需提现），奖励顺序按照消费时间顺序依次完成，奖励力度根据合伙人的前期营销投入和销售业绩灵活调整。</view>
+                <view class="content-section">5.如合伙人提供产品和服务出现任何食品安全事故，违法违规，虚假销售，非合理抬高物价，或禁售类产品，{{appname}}有权随时解除本合同，合伙人因上述原因所带来的损失，由合伙人承担，{{appname}}不负任何责任。同时，{{appname}}如因上述原因被追诉承担责任的，{{appname}}有权要求合伙人对此进行赔偿。</view>
+                <view class="content-section">6.{{appname}}有判定用户的行为是否符合{{appname}}服务条款的要求和精神的保留权利，如果用户违背了服务条款的规定，{{appname}}有中断对其提供服务的权利。</view>
+                <view class="content-section">7.如因不可抗力（包括但不限于：自然灾害、如台风、地震、洪水、冰雹；政府行为，如征收、征用；社会异常事件，如罢工、骚乱）或其他无法控制的原因使{{appname}}销售系统崩溃或无法正常使用导致支付交易无法完成或丢失有关的信息、记录等，{{appname}}不承担责任。但是{{appname}}会尽可能合理地协助处理善后事宜，并努力减少客户损失。</view>
+                <view class="content-section">8.合伙人应保证提供真实有效并盖章的单位资质证明复印件，包括工商登记证明、税务登记证明、行业许可证、法人身份证复印件，与负责人（法人）同名的银行账户及相关资质，因合伙人资质问题而使本协议无法正常履行的，所有后果由合伙人负责。</view>
+                <view class="content-section">9.合伙人应遵循《中华人民共和国食品安全法》，《中华人民共和国消费者权益保护法》等法律法规的相关条例，并保证自身具备提供本合同项下产品和服务及履行本合同项下合伙人产品和服务的必要的资质批文、管理制度及合格人员，保证消费者所购产品和服务安全合法，确保及时交付和服务。</view>
+                <view class="content-section">10.合伙人可随时根据提示改变合伙人的微信账号密码。合伙人将对微信号和密码安全负全部责任。合伙人对以其微信号所绑定的小程序用户名进行的所有活动和事件负全责。</view>
+                <view class="content-section">11.如用户要求提供发票，由合伙人负责提供。</view>
+                <view class="content-section">12.合伙人不得将“{{appname}}”营销工具与储值卡充值优惠等其他活动同时使用。</view>
+                <view class="content-section">13.如合伙人发生风险交易（包括但不限于虚假申请合伙人、虚假交易、泄露账户信息、套现、洗单、恶意倒闭、虚假交易、超授权限额使用）造成的法律责任由合伙人承担。如被发现，{{appname}}有权利立即关闭“{{appname}}”平台合伙人及合伙人入驻合伙人的接口，并不向合伙人退还信息管理费和平台服务费等费用，保留追究合伙人因上述行为对{{appname}}或{{appname}}指定代理商造成的直接经济损失和间接经济损失的权利。</view>
+                <view class="content-section">14.合伙人设定的营销奖励金比例不得超过平均客单价的 49%。最高奖励金额不得超过 4999 元（例如：合伙人合伙人平均客单价为 200 元，则最大消费惊喜奖励金额不得超过 98 元，合伙人平均客单价由合伙人依据平时消费额自行决定） 15.双方的品牌归各自所有。合伙人和{{appname}}双方均不可在对方未经授权的情况下使用对方名称、商标以及涉及相关内容的销售、促销宣传材料及广告、报纸、杂志、宣传单等。如因此产生的不良后果及损失由违约方自行全部承担。
+                </view>
+            </view>
+        </scroll-view>
+        <view class="be__parner">
+            <button type="primary" loading="{{canSubmit}}" bindtap="toPartnerTap"> 成为合伙人 </button>
+        </view>
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>

@@ -1,0 +1,39 @@
+
+.shoptop {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background: #ffffff;
+    padding: 10px;
+    border-top:1px solid #f6f6f6;
+    margin-bottom: 30rpx;
+}
+.logo {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 50%;
+    margin-right: 30rpx;
+}
+.name {
+    flex: 1;
+}
+.page__bd_spacing {
+    background: #ffffff;
+}
+.info-item {
+    padding: 20rpx;
+    border-bottom: 1px solid #f6f6f6;
+    display: flex;
+    align-items: center;
+}
+.info-item-name {
+    color: #666666;
+    margin-right: 20rpx;
+}
+.info-item-text {
+    color: #555555;
+    flex: 1;
+}
+.btnbox {
+    padding: 20px;
+}

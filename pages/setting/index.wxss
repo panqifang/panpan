@@ -1,0 +1,32 @@
+page {
+    background: #f1f1f1;
+}
+.hei20 {
+    height: 20rpx;
+}
+
+.user { background: #ffffff; }
+.user-avatar { width: 100rpx; height: 100rpx; border-radius: 6rpx; margin: 20rpx; }
+.user-text { display: flex; flex-direction: column; justify-content: center; }
+.user-text-name { font-size: 32rpx; }
+.user-text-role { font-size: 28rpx; color: #999999; }
+
+.up__avatar_btn {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    line-height: normal;
+    background: none;
+    text-align: left;
+    font-size: 32rpx;
+}
+.up__avatar_btn:before {
+    display: none;
+}
+.up__avatar_btn:after {
+    display: none;
+}
+
+page .address {
+    font-size: 24rpx;
+}

@@ -1,0 +1,34 @@
+/* pages/rewarddetail/index.wxss */
+.weui-form-preview {
+    margin-bottom: 40rpx;
+}
+
+.type {
+    color: green
+}
+
+.nodata {
+    display: flex;
+    justify-content: center;
+    margin: 40rpx 0;
+}
+.weui-form-preview__label {
+    font-weight: 700;
+    font-size: 40rpx;
+    text-align-last:inherit;
+}
+
+.weui-form-preview__label_time {
+    font-weight: 300;
+}
+
+.color_green {
+    color: green;
+}
+
+.color_red {
+    color: red;
+}
+.color_blue {
+    color: blue;
+}

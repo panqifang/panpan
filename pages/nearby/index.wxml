@@ -1,0 +1,52 @@
+
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '加载中' }}"/>
+
+<!-- nodata  -->
+<template is="nodata" wx:if="{{nodata}}" />
+
+<view class="page" wx:if="{{init}}">
+    <view class="page__bd">
+        <view class="shop-top">
+            附件共有 <text class="red">{{shops.length}}</text> 家商户
+        </view>
+        <block wx:if="{{shops.length > 0}}">
+            <view class="order_list" wx:for="{{shops}}" wx:key="{{index}}">
+                <view class="order_list_top">
+                     <image class="order_list_top_logo" src="{{item.logo}}"></image>
+                </view>
+                <view class="order_list_body">
+                    <view class="order_list_body_item"> 
+                        <text class="order_list_body_item_title">{{item.title}}</text>
+                    </view>
+                    <view class="order_list_body_item"> 
+                        
+                        热度： {{item.pay_times}}  距离：
+                        <text class="order_list_body_item_other" wx:if="{{item.range_km}}">{{item.range_km}}Km</text>
+                        <text class="order_list_body_item_other" wx:else>{{item.range}}m</text>
+                    </view>
+                </view>
+                <view class="order_list_footer">
+                    <navigator class="order_list_footer_btn" url="/pages/shopinfo/index?shopid={{item.shopid}}" hover-class="navigator-hover">详情</navigator>
+                </view>
+            </view>
+        </block>
+        
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+    <view class="no_data_content">
+        <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+        <text class="no_data_text">该附近没有店铺</text>
+    </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>

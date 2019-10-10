@@ -1,0 +1,46 @@
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '加载中' }}"/>
+
+<!-- nodata  -->
+<template is="nodata" wx:if="{{nodata}}" />
+
+<view class="page" wx:if="{{init}}">
+    <view class="page__bd">
+
+        <view wx:if="{{items.length > 0}}">
+            <view class="weui-cells__title">可合并一下用户：</view>
+            <view class="weui-cells weui-cells_after-title">
+                <block wx:for="{{items}}" wx:key="">
+                    <view class="weui-cell">
+                        <view class="weui-cell__hd">
+                            <image src="{{item.avatar}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                        </view>
+                        <view class="weui-cell__bd">{{item.nickname}}</view>
+                        <view class="weui-cell__ft">创建时间：{{item.create_time}}</view>
+                    </view>
+                </block>
+            </view>
+            
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" bindtap="mergeClic">执行合并</button>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>
+
+<!-- 没有数据 -->
+<template name="nodata">
+    <view class="no_data_content">
+        <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+        <text class="no_data_text">没有要合并的用户</text>
+    </view>
+</template>

@@ -1,0 +1,117 @@
+.page__bd {
+  padding-top: 0rpx;
+}
+
+.half {
+  width: 50%;
+}
+
+.h_layout {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order_list_cow {
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time {
+  font-size: 32rpx;
+}
+.shop_title{
+  margin-top: 5rpx;
+  font-size: 63rpx;
+}
+.high{
+  height: 105rpx;
+}
+
+.order_list_top_active {
+  width: 100%;
+  flex-flow: row wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+}
+
+.center {
+  display: inline-block;
+ 
+}
+
+.distance {
+  display: inline-block;
+  margin-top: 20rpx;
+}
+
+.r {
+  position: absolute;
+  right: 10rpx;
+  display: flex;
+}
+
+.l {
+  position: absolute;
+  left: 0;
+  display: flex;
+}
+
+.tabbox {
+  height: 110rpx;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  margin: 10rpx 0 20rpx;
+  box-shadow: 5rpx 5rpx 10rpx rgba(0, 0, 0, 0.2);
+  border-radius: 10rpx;
+  justify-content: space-around;
+}
+
+.hrk {
+  height: 84rpx;
+  width: 2rpx;
+  background: #b6b6b6;
+}
+
+.tabbox-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.tabbox-item-active {
+  color: #f74848;
+}
+
+.order_list_top_front {
+  width: 100%;
+  height: 300rpx;
+}
+
+.right {
+  position: absolute;
+  right: 2rpx;
+}
+
+.left {
+  width: 304rpx;
+  position: relative;
+  left: 10rpx;
+  right: 204rpx;
+}
+
+.address {
+  width: 100%;
+  justify-content: left;
+  font-size: 10pt;
+  color: #111;
+  display: flex;
+}
+
+.address_layout {
+  width: 100%;
+  align-items: top;
+}

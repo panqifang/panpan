@@ -1,0 +1,348 @@
+/* pages/homes/homes.wxss */
+
+/*修改如下 */
+
+.page {
+  position: relative;
+  z-index: 1;
+}
+
+.acbg {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.one {
+  display: flex;
+  /* background: rgba(0, 0, 0, 0.4); */
+  padding: 16rpx 0;
+  font-size: 40rpx;
+  color: #fff;
+  height: 60rpx;
+  align-items: center;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  justify-content: center;
+  border-bottom: 1rpx dashed #ccc;
+}
+
+.one .zj {
+  margin-left: 40rpx;
+  font-size: 26rpx;
+  color: #f1f1f1;
+}
+
+.two {
+  display: flex;
+  /* background: rgba(0, 0, 0, 0.4); */
+  padding: 16rpx 0;
+  font-size: 40rpx;
+  color: #fff;
+  height: 186rpx;
+  padding-left: 30rpx;
+  flex-direction: column;
+  padding-right: 30rpx;
+  border-bottom: 1rpx dashed #ccc;
+}
+
+.itemutitle {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  justify-content: space-between;
+}
+
+.surp_icon {
+  width: 133rpx;
+  height: 49rpx;
+}
+
+.title-text {
+  margin-left: 20rpx;
+  color: #fff;
+}
+
+.myfh {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20rpx;
+}
+
+.wmore {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.rig {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.item-boxbox {
+  /* background: rgba(0, 0, 0, 0.4); */
+  padding: 16rpx 0;
+  font-size: 40rpx;
+  color: #fff;
+  height: 420rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  border-bottom: 1rpx dashed #ccc;
+}
+
+.item-boxs {
+  /* background: rgba(0, 0, 0, 0.4); */
+  padding: 16rpx 0;
+  font-size: 40rpx;
+  color: #fff;
+  height: 336rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx dashed #ccc;
+}
+
+.listb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.time {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.djs {
+  display: flex;
+  flex-direction: column;
+  font-size: 34rpx;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.djsstr {
+  font-size: 80rpx;
+  color: #fff;
+}
+
+.jc {
+  display: flex;
+  flex-direction: column;
+  font-size: 28rpx;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.jsd {
+  font-size: 57rpx;
+  color: red;
+  display: flex;
+  align-items: flex-end;
+}
+
+.jsd .yan {
+  font-size: 30rpx;
+  color: #fff;
+  margin-left: 10rpx;
+  margin-bottom: 10rpx;
+}
+
+.tips {
+  font-size: 26rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.tips .rule {
+  color: #888;
+  font-size: 30rpx;
+  text-decoration: underline;
+}
+
+.share_icon {
+  width: 430rpx;
+  height: 100rpx;
+}
+
+.sharebtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.adrule {
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 22rpx;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 2rpx 9rpx;
+  margin-left: 30rpx;
+  display: block;
+  border-radius: 10rpx;
+}
+
+.last {
+  padding-left: 30rpx;
+  padding-top: 36rpx;
+}
+
+.times {
+  color: #fff;
+  margin-bottom: 23rpx;
+  display: flex;
+  align-items: center;
+}
+
+.phone {
+  color: #fff;
+  margin-bottom: 28rpx;
+  display: flex;
+  align-items: center;
+}
+
+.address {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.alert {
+  width: 660rpx;
+  border-radius: 20rpx;
+}
+
+.alerttitle {
+  padding: 30rpx;
+  font-size: 34rpx;
+  position: relative;
+}
+
+.closebtnshare {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 10rpx 20rpx;
+}
+
+.alertbtns {
+  display: flex;
+  align-items: center;
+  background: #ccc;
+}
+
+.shareqr {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #666;
+}
+
+.tof {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tof::after {
+  display: none;
+}
+
+.rule-body {
+  width: 680rpx;
+  background: #fff;
+}
+
+.rule-title {
+  padding: 30rpx;
+  border-bottom: 1px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rule-content {
+  padding: 30rpx;
+  height: 400rpx;
+  overflow: hidden;
+}
+
+.rule-scorll {
+  height: 400rpx;
+}
+
+.rule {
+  display: flex;
+  margin-bottom: 10rpx;
+}
+
+.content {
+  flex: 1;
+}
+
+.closebtns {
+  font-size: 30rpx;
+}
+
+.icons {
+  width: 30rpx;
+  height: 30rpx;
+  margin-bottom: 8rpx;
+  margin-right: 10rpx;
+}
+
+.shop-magin {
+  padding-left: 10rpx;
+}
+
+.yxdbtn {
+  padding: 2rpx 20rpx;
+  border: 1rpx solid #fff;
+  color: #ffffff;
+  font-size: 26rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5rpx;
+}
+
+.itemutitle-del {
+  display: flex;
+  align-items: center;
+}
+.jch{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+}
+.toppool{
+  position: absolute;
+  top: 45rpx;
+  right: 0;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.head-img {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 15rpx;
+  border-radius: 50%;
+}

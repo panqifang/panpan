@@ -1,0 +1,162 @@
+<block wx:if="{{!nodata}}">
+  <image wx:if="{{role == 10 || role  == 20}}" class='acbg' mode="widthFix" src='../../assets/images/acbg.png'></image>
+
+</block>
+<view class="page" wx:if="{{!nodata}}">
+  <!-- 用户  -->
+  <view class="page__bd" wx:if="{{role === 10 || role == 20}}">
+
+    <!-- 1 -->
+    <view class="one"><image  src="{{shop.logo}}"  class='head-img'></image>{{shop.title}}
+      <view class='zj'>最近消费</view>
+    </view>
+
+
+    <!-- 2 -->
+    <view class='two'>
+      <view class='itemutitle'>
+        <view class='itemutitle-del'>
+          <image src="/assets/images/surp_icon1.png" class='surp_icon'> </image>
+          <view class='title-text'>分红奖 </view>
+          <view class='adrule' bindtap='showRulePopup' data-ty="one">活动规则</view>
+        </view>
+      </view>
+
+      <view class='myfh'>
+        <view style='display: flex;align-items:center;'>我的分红: ¥
+          <view style='margin: 0 10rpx; font-size: 50rpx;'>{{data.backing_money||0}}</view>
+        </view>
+        <view bindtap='topBackingList' class='wmore'>
+          详情
+          <image class='rig' src='../../assets/images/right_w.png'></image>
+        </view>
+      </view>
+    </view>
+
+    <view class='item-boxbox'>
+
+      <view class='itemutitle'>
+        <view class='itemutitle-del'>
+          <image src="/assets/images/surp_icon2.png" class='surp_icon'> </image>
+          <view class='title-text'>终极奖 </view>
+          <view class='adrule' bindtap='showRulePopup' data-ty="two">活动规则</view>
+        </view>
+        <view class='yxdbtn' wx:if="{{role == 10}}" bindtap="pay">
+          购买
+        </view>
+      </view>
+      <view class='time'>
+        <view class='djs'>
+          <view class='translate'>倒计时:</view>
+          <view class='djsstr'>{{timeStr}}</view>
+        </view>
+      <view class='jch'>
+
+        <view class='jc'>
+          <view class='reward'>鼓励金已达 </view>
+          <view class='jsd'>{{(momey>pool_bottom_init)?(momey):pool_bottom_init}}
+            <view class='yan'>元</view>
+          </view>
+        </view>
+        
+        <view bindtap='toppool' class='toppool'>
+          分红商户
+          <image class='rig' src='../../assets/images/right_w.png'></image>
+        </view>
+
+      </view>
+        <view class='tips'>倒计时结束后最后一名消费者得到鼓励金一半奖励 </view>
+      </view>
+    </view>
+
+    <view class='item-boxs'>
+
+      <view class='itemutitle'>
+        <view class='itemutitle-del'>
+          <image src="/assets/images/surp_icon3.png" class='surp_icon'> </image>
+          <view class='title-text'>推荐奖 </view>
+          <view class='adrule' bindtap='showRulePopup' data-ty="three">活动规则</view>
+        </view>
+      </view>
+
+      <view style='height: 50rpx;'></view>
+
+      <view class='sharebtn'>
+        <image src="/assets/images/share_icon.png" class='share_icon' bindtap="shareTo"></image>
+      </view>
+
+      <!-- <view class='sharebtn' wx:if="{{!showyxd && role == 10}}">
+                <image src="/assets/images/yxd.png" class='share_icon'  bindtap="pay"></image>
+            </view> -->
+
+      <view class='listb'>
+        <view bindtap='mylist' class='wmore'>
+          推荐列表
+          <image class='rig' src='../../assets/images/right_w.png'></image>
+        </view>
+      </view>
+    </view>
+
+    <view class='last'>
+      <view class='times'>
+        <image class='icons' src='../../assets/images/ic1.png'></image>
+        <view class='shop-magin'>{{optime}} - {{clotime}}</view>
+      </view>
+      <view class='phone' bindtap='call' data-mobile="{{shop.phone}}">
+        <image class='icons' src='../../assets/images/ic3.png'></image>
+        <view class='shop-magin'>{{shop.phone}}</view>
+      </view>
+      <view bindtap='goToShop' class='address'>
+        <image class='icons' src='../../assets/images/ic2.png'></image>
+        <view class='shop-magin'>{{shop.address}}</view>
+        <image class='rig' src='../../assets/images/right_w.png'></image>
+      </view>
+    </view>
+  </view>
+  <template is="nodata" wx:if="{{role == 30 || role== 40 || role == 50}}" />
+</view>
+
+<van-popup show="{{ shareshow }}" bind:close="onClose">
+  <view class='alert'>
+    <view class='alerttitle'>
+      分享方式
+      <view bindtap='onClose' class='closebtnshare'>关闭</view>
+    </view>
+    <view class='alertbody'>
+    </view>
+    <view class='alertbtns'>
+      <view class='shareqr' bindtap='shareTo'>二维码分享</view>
+      <button class='tof' open-type="share">转发好友</button>
+    </view>
+  </view>
+</van-popup>
+
+<!-- nodata  -->
+<template is="nodata" wx:if="{{nodata}}" />
+
+<!-- 没有数据 -->
+<template name="nodata">
+  <view class="no_data_content">
+    <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+    <text class="no_data_text">你暂时还没有订单</text>
+  </view>
+</template>
+
+<van-popup show="{{ ruleshow }}" bind:close="onRuleClose">
+  <view class='rule-body'>
+    <view class='rule-title'>
+      活动规则
+      <view class="closebtns" bindtap='onRuleClose'>关闭</view>
+    </view>
+    <view class='rule-content'>
+      <scroll-view class='rule-scorll' scroll-y>
+        <block wx:for="{{rules}}" wx:key="{{index}}">
+          <view class="rule">
+            <view wx:if="{{rules.length > 1}}">{{index + 1}}.</view>
+            <view class='content'>{{item}}</view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </view>
+</van-popup>

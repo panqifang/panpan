@@ -1,0 +1,15 @@
+<import src="../../components/cropper/we-cropper.wxml" />
+
+<view class='page'>
+  <view class="cropper-wrapper">
+    <template is="we-cropper" data="{{...cropperOpt}}" />
+    <view class="cropper-buttons">
+      <view class="upload" bindtap="uploadTap">
+        选择图片
+      </view>
+      <view wx:if="{{hasSelectImage}}" class="getCropperImage" bindtap="getCropperImage">
+        确认选择
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+/* pages/nearby/index.wxss */
+.order_list_top_logo {
+    width: 100rpx;
+    height: 100rpx;
+}
+.shop-top {
+    padding: 20rpx;
+    background: #ffffff;
+    margin-bottom: 20rpx;
+}
+.order_list {
+    margin: 0;
+    border-bottom: 1rpx solid #f1f1f1;
+}

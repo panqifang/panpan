@@ -1,0 +1,25 @@
+<view class="page">
+
+    <view class="page__bd" wx:if="{{info.length > 0}}">
+        <block wx:for="{{info}}" wx:key="{{index}}">
+            <view class="weui-form-preview">
+                <view class="weui-form-preview__hd">
+                    <view class="weui-form-preview__item">
+                        <view class="weui-form-preview__label color_green" wx:if="{{item.type == 13}}">终极奖</view>
+                        <view class="weui-form-preview__label color_green" wx:else>分红奖</view>
+                        <view class="weui-form-preview__value_in-hd">¥ {{item.money}}</view>
+                    </view>
+                </view>
+                <view class="weui-form-preview__bd">
+                    <view class="weui-form-preview__item">
+                        <view class="weui-form-preview__label weui-form-preview__label_time"></view>
+                        <view class="weui-form-preview__value">时间: {{item.create_time}}</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="page__bd" wx:else>
+        <view class='nodata'><text>暂时没有数据</text></view>
+    </view>
+</view>

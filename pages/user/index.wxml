@@ -1,0 +1,14 @@
+
+<!-- shop -->
+<import src="./shop.wxml"/>
+<!-- agent -->
+<import src="./agent.wxml"/>
+
+<include wx:if="{{role == 10}}" src="./user.wxml"/>
+
+<include wx:if="{{role == 20}}" src="./shop.wxml"/>
+
+<include wx:if="{{role > 20}}" src="./agent.wxml"/>
+
+
+<view wx:if="{{appname}}" class="bottom-center"> <text>@ {{appname}}</text></view> 

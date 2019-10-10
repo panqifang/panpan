@@ -1,0 +1,155 @@
+
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '加载中' }}"/>
+
+<view class="page">
+    <!-- 用户  -->
+    <view class="page__bd user-view" wx:if="{{role == 10}}">
+
+        <view class='user-top' >
+            <view class='shopbtns' wx:if="{{false}}">
+                <view class='nearshop' bindtap='scan'>
+                    <image class="sysimg" src='../../assets/images/sys.png'></image>
+                    <view class='systext'>扫一扫</view>
+                </view>
+                <navigator url="/pages/map/index" class='nearshop'>
+                    <image class="sysimg" src='../../assets/images/loc_w.png'></image>
+                    <view class='systext'>附近店</view>
+                </navigator>
+            </view>
+            <view  wx:if="{{orders.length > 0}}" class='ordertitle'>
+                <view class="shop-tr">消费店铺</view>
+                <view class='order-tr'>我的订单</view>
+            </view>
+        </view>
+
+        <scroll-view wx:if="{{shop.length > 0}}" class="shop-scroll" scroll-y>
+            <block wx:for="{{shop}}" wx:key="{{index}}">
+                <view class="shop-item {{shopid === item.shopid? 'shop-active' : ''}}" bindtap="showShopOrders" data-shopid="{{item.shopid}}"  data-item="{{item}}">
+                    <image class="logo" src="{{item.logo}}"></image>
+                    <view class="logoinfo">
+                        <view class="title">{{item.title}}</view>
+                        <view class="hot">热度 {{shopid === item.shopid? '：' + orderNum : ''}}</view>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+        
+        <scroll-view wx:if="{{orders.length > 0}}" class="order-scroll" scroll-y>
+            <!-- <view bindtap="toPool" class='toPool' data-shopid="{{shopid}}">
+                <view class="center">点击进入活动详情</view>
+                <view>></view>
+            </view> -->
+            <view class="orders-page page__show" >
+                <view class='itemorder' wx:if="{{logo_url}}">
+                  <image class='mdpic' src='{{logo_url}}' mode="widthFix"></image>
+                </view>
+                <block wx:for="{{orders}}" wx:key="{{index}}">
+                    <view class='itemorder'>
+                        <view class="orders-item">
+                            <view class="nickname">
+                                <view class="time" style="font-size:30rpx;">
+                                    订单金额： <view class="money-def">{{item.total_fee}} </view>元
+                                </view>
+                                <view class="time">
+                                    已奖励： <view class="money-tip {{item.isdown? 'down' : 'up'}}">{{item.realMoney}} </view>元
+                                </view>
+                            </view>
+                            <view class="up__box" wx:if="{{item.switcher == 4 || item.switcher == 12}}">
+                                <image wx:if="{{item.isdown}}" src="/assets/images/down-line.png" class="line" mode="widthFix"></image>
+                                <image wx:else src="/assets/images/up-line.png" class="line" mode="widthFix"></image>
+                            </view>
+                            <view wx:if="{{item.switcher == 4 || item.switcher == 12}}" class="give-btn {{item.isdown? 'down' : 'up'}}">
+                                <text wx:if="{{hash == '6a60ed12' && item.is_backed == 11}}">已长大</text>
+                                <text wx:elif="{{hash !== '6a60ed12' && item.is_backed == 11}}">已涨停</text>
+                                <text wx:else>领取</text>
+                            </view>
+                            <view wx:else class="give-btn no__up down" style="font-size:30rpx;">
+                                排名：{{item.slot}}
+                            </view>
+                        </view>
+                        <view class='btns'>
+                            <view class='fh' bindtap='seefh' data-order="{{item}}">查看分红</view>
+                            <view class='xq' bindtap="backInfo" data-order="{{item}}">奖励详情</view>
+                        </view>
+                    </view>
+                </block>
+                <view class="morebtn" wx:if="{{moreText}}" bindtap="moreOrder">{{moreText}}</view>
+            </view>
+        </scroll-view>
+        <!-- nodata  -->
+        <template is="nodata" wx:if="{{nodata}}" />
+    </view>
+
+    <!--  商户 -->
+    <view class="page__bd" wx:if="{{role == 20}}">
+        <block wx:if="{{orders.length > 0}}">
+            <view class="order_list" wx:for="{{orders}}" wx:key="{{index}}">
+                <view class='order_list_soft'>{{orderTotal - index}}</view>
+                <view class="order_list_top">
+                    <image class="order_list_top_logo" src="{{item.avatar}}"></image>
+                </view>
+                <view class="order_list_body">
+                    <view class="order_list_body_item"> 
+                        <text class="order_list_body_item_title">{{item.nickname}}</text>
+                    </view>
+                    <view class="order_list_body_item">
+                        <text class="order_list_body_item_time">订单时间：{{item.create_time}}</text>
+                    </view>
+                </view>
+                <view class="order_list_footer"> 
+                    可领金额
+                    <text class="order_list_body_item_money">￥{{item.realMoney}}</text>
+                </view>
+            </view>
+        </block>
+        <!--  -->
+        <template is="loadmore" wx:if="{{more}}" data="{{ text: '获取更多中' }}"/> 
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+    <view class="no_data_content">
+        <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+        <text class="no_data_text">你暂时还没有订单</text>
+    </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>
+
+
+<!-- 红包 showHB-->
+ <view wx:if="{{showHB}}" class="popup popup--show"> 
+    <view class="popup__mask"></view>
+    <view class="popup__container">
+        <block wx:if="{{ hash == '6a60ed12'}}">
+            <view class="img-popup_{{hash}}">
+                <view class="hb_money_{{hash}}">
+                    <text class="hb_get_money">{{money}}</text>
+                </view>
+                <image class="hb_img_{{hash}}" src="/assets/images/hb-{{hash}}.png" mode="widthFix"></image>
+            </view>
+            <view class="hb__close">
+                <image class="hb_img__close" bindtap="close" src="/assets/images/close.png" mode="widthFix"></image>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="img-popup">
+                <view class="hb_money">
+                    <text class="hb_get_money">￥{{money}}</text>
+                </view>
+                <image class="hb_img" src="{{twice? '/assets/images/hb.png' : '/assets/images/hb2.png'}}" mode="widthFix"></image>
+            </view>
+            <view class="hb__close">
+                <image class="hb_img__close" bindtap="close" src="/assets/images/close.png" mode="widthFix"></image>
+            </view>
+        </block>
+    </view>
+</view>

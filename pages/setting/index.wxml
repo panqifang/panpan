@@ -1,0 +1,75 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="user flex-row">
+            <image class="user-avatar" src="{{user.avatar}}"></image>
+            <view class="user-text">
+                <view class="user-text-name">{{user.nickname}}</view>
+                <view class="user-text-role" wx:if="{{user.role == 10}}">用户</view>
+                <view class="user-text-role" wx:if="{{user.role == 20}}">商户</view>
+                <view class="user-text-role" wx:if="{{user.role == 30}}">合伙人</view>
+                <view class="user-text-role" wx:if="{{user.role == 40}}">服务商</view>
+                <view class="user-text-role" wx:if="{{user.role == 50}}">代理商</view>
+            </view>
+        </view>
+        <view class="hei20"></view>
+        <view class="weui-cells weui-cells_after-title">
+            <navigator wx:if="{{!user.mobile}}" url="/pages/bindmobile/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">绑定手机</view>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <!-- <navigator wx:if="{{user.role == 10 && user.mobile}}" url="/pages/merge/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">合并数据</view>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator> -->
+            <navigator wx:if="{{user.role === 10}}" url="/pages/suggest/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">投诉建议</view>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+        <!-- <view class="hei20"></view>
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="/pages/balance/index?balance={{money}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">余额流水</view>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+            <navigator url="/pages/balancecount/index?balance={{money}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">余额统计</view>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view> -->
+        <view class="hei20" wx:if="{{user.role == 10}}"></view>
+        <view class="weui-cells weui-cells_after-title" wx:if="{{user.role == 10}}">
+            <navigator url="/pages/nopayorder/index" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">未支付订单</view>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+        <view class="hei20"></view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_access" bindtap="clearCache" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">清除缓存</view>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <button class="weui-cell__bd up__avatar_btn" open-type="getUserInfo" bindgetuserinfo="updateAvatar"> 更新头像 </button>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+        <!-- <view class="hei20" wx:if="{{user.role == 10}}"></view>
+        <view class="weui-cells weui-cells_after-title" wx:if="{{user.role == 10}}">
+            <navigator class="weui-cell weui-cell_access"  url="/pages/userawards/index" hover-class="weui-cell_active">
+                <view class="weui-cell__bd">推荐奖励信息</view>
+                <view class="weui-cell__ft"></view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view> -->
+    </view>
+</view>

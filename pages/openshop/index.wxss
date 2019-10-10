@@ -1,0 +1,23 @@
+page {
+    background: #ffffff;
+    height: 100%;
+}
+.page, .page__hd {
+    height: 100%;
+}
+.page__hd {
+    height: 100%;
+    padding-bottom: 120rpx;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.shop-agress-view {
+    height: 100%;
+}
+.info-role-content {
+    padding: 30rpx;
+    font-size: 28rpx;
+}
+.be__parner {
+    padding: 20rpx;
+}

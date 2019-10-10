@@ -1,0 +1,71 @@
+page {
+    position: relative;
+}
+.page {
+    padding: 60rpx 30rpx 0;
+}
+
+.weui-cells:before {
+    border-top-color: #ffffff;
+}
+.weui-cells:after {
+    border-bottom-color: #ffffff;
+}
+
+.tip {
+    font-size: 30rpx;
+    color: #999999;
+    padding: 20rpx;
+}
+.weui-label {
+    width: 160rpx;
+}
+
+.weui-btn-area {
+    margin: 0;
+}
+.cash__tip {
+    font-size: 24rpx;
+    color: #e64340;
+    padding-bottom: 0;
+}
+.my__cash {
+    color: darkred;
+}
+.weui-cell__ft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.down__png {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.select__bank__mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 98;
+}
+.select__bank {
+    position: fixed;
+    width: 500rpx;
+    height: 100%;
+    right: 0;
+    top: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: flex-end;
+}
+.select__bank_body {
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+}
+.active {
+    color: #18a234;
+}

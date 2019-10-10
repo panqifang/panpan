@@ -1,0 +1,100 @@
+
+<!-- 初始化加载中 -->
+<template is="loadmore" wx:if="{{load}}" data="{{ text: '获取订单中' }}"/>
+
+<!-- nodata  -->
+<template is="nodata" wx:if="{{nodata}}" />
+
+<view class="page" wx:if="{{init}}">
+    <view class="page__bd">
+        <view wx:if="{{orders.length > 0}}">
+            <view class="title">
+                <text wx:if="{{listType == 2}}">未绑定店铺</text>
+                <text wx:if="{{listType == 0}}">已绑定店铺</text>
+                <text wx:if="{{listType == 1}}">可提现店铺</text>
+            </view>
+            <block wx:for="{{orders}}" wx:key="{{index}}">
+                <template is="unbind" wx:if="{{listType == 2}}" data="{{ item }}"/>
+                <template is="bind" wx:if="{{listType == 0}}" data="{{ item }}"/>
+                <template is="cashout" wx:if="{{listType == 1}}" data="{{ item }}"/>
+            </block>
+        </view>
+        <!--  -->
+        <template is="loadmore" wx:if="{{more}}" data="{{ text: '获取更多中' }}"/> 
+
+    </view>
+</view>
+
+<!-- 没有数据 -->
+<template name="nodata">
+    <view class="no_data_content">
+        <image class="no_data_img" src="../../assets/images/nodata.png" mode="aspectFill"></image>
+        <text class="no_data_text">你暂时还没有店铺</text>
+    </view>
+</template>
+
+<!-- 没有数据 -->
+<template name="loadmore">
+    <view class="weui-loadmore" >
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">{{text}}</view>
+    </view> 
+</template>
+
+<!-- 未绑定 -->
+<template name="unbind">
+    <view class="order_list un__bind">
+        <view class="order_list_body order_list_body__WEI">
+            <view class="order_list_body_item"> 
+                创建时间：
+                <text class="order_list_body_item_time">{{item.create_time}}</text>
+            </view>
+            <view class="order_list_body_item"> 
+                店铺编号：
+                <text class="order_list_body_item_money">{{item.code}}</text>
+            </view>
+        </view>
+        <view class="order_list_body-btn">
+            <button type="default" size="mini" bindtap="showShopCode" data-shop="{{item}}" > 店铺码 </button>
+        </view>
+    </view>
+</template>
+
+<!-- 已经绑定 -->
+<template name="bind">
+    <view class="order_list un__bind">
+        <image class="shop__logo" src="{{item.logo}}"></image>
+        <view class="order_list_body">
+            <view class="order_list_body_item"> 
+                <text class="order_list_body_item_title">{{item.title}}</text>
+            </view>
+            <view class="order_list_body_item">
+                <text class="order_list_body_item_time">{{item.create_time}} 总提成：{{item.money_sum}}</text>
+            </view>
+        </view>
+        <view class="order_list_footer"> 
+            <text class="order_list_body_item_money">￥{{item.money}}</text>
+        </view>
+    </view>
+</template>
+
+<!-- keti -->
+<template name="cashout">
+    <view class="order_list un__bind" bindtap="toCashOut" data-shop="{{item}}">
+        <image class="shop__logo" src="{{item.logo}}"></image>
+        <view class="order_list_body">
+            <view class="order_list_body_item"> 
+                <text class="order_list_body_item_title">{{item.title}}</text>
+            </view>
+            <view class="order_list_body_item">
+                <text class="order_list_body_item_time">{{item.create_time}}</text>
+            </view>
+        </view>
+        <view class="order_list_footer"> 
+            <text class="order_list_body_item_money">￥{{item.money}}</text>
+        </view>
+        <view class="right__icon">
+            <image class="right_arrow" src="/assets/images/right.png"></image>
+        </view>
+    </view>
+</template>

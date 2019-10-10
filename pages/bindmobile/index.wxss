@@ -1,0 +1,15 @@
+
+.page__hd {
+    height: 300rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.app_logo {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20rpx;
+}

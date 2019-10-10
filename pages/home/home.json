@@ -1,0 +1,8 @@
+{
+    "navigationBarTitleText": "活动中心",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "van-popup": "../../components/popup/index"
+    },
+      "navigationStyle": "custom"
+}
